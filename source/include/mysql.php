@@ -218,5 +218,20 @@ class MySQL {
 		$str .= '<b>Errno:</b>'.$errorno.'<br />';
 		exit($str);
 	}
+
+//pr search modify
+function get_prcount($table2, $condition = '') {
+		//$table = $this->table($table);
+		if (empty($condition)) {
+			$where = '1';
+		} elseif (is_array($condition)) {
+			$where = $this->implode_field_value($condition, ' AND ');
+		} else {
+			$where = $condition;
+		}
+		$row = $this->fetch_first("SELECT COUNT(*) AS num FROM  $table2 WHERE $where");
+		return $row['num'];
+}
+// end by skyfox
 }
 ?>

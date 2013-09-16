@@ -44,6 +44,8 @@ if (!$smarty->isCached($tempfile)) {
 				break;
 			case 'intro' :
 				$where = "w.web_intro like '%$keyword%'";
+			case 'pr' :
+				$where = "d.web_grank like '%$keyword%'";
 			default :
 				$where = "w.web_name like '%$keyword%'";
 				break;
@@ -51,9 +53,15 @@ if (!$smarty->isCached($tempfile)) {
 		}
 			
 		$websites = get_website_list($where, 'web_ctime', 'DESC', $start, $pagesize);
+		//pr search modify
+		if($strtype=='pr'){
+		$table2 = $DB->table('webdata');
+		$total = $DB->get_prcount($table2.' d', $where);
+		}else{
 		$total = $DB->get_count($table.' w', $where);
+		}
 		$showpage = showpage($pageurl, $total, $curpage, $pagesize);
-			
+		//end by skyfox
 		$smarty->assign('pagename', $pagename);
 		$smarty->assign('category_list', get_categories());
 		$smarty->assign('archives', get_archives());

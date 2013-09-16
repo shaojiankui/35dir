@@ -14,14 +14,14 @@ RewriteRule ^archives\/(\d+)-(\d+)\.html$ index.php\?mod=archives&date=$1&page=$
 RewriteRule ^archives\/(\d+)/(\d+)$ index.php\?mod=archives&date=$1&page=$2
 
 # 站内搜索
-RewriteRule ^search-(name|url|tags|intro)-(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
-RewriteRule ^search-(name|url|tags|intro)-(.*)\.html$  index.php\?mod=search&type=$1&query=$2
+RewriteRule ^search-(name|url|tags|intro|pr)-(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search-(name|url|tags|intro|pr)-(.*)\.html$  index.php\?mod=search&type=$1&query=$2
 
-RewriteRule ^search\/(name|url|tags|intro)\/(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
-RewriteRule ^search\/(name|url|tags|intro)\/(.*)\.html$  index.php\?mod=search&type=$1&query=$2
+RewriteRule ^search\/(name|url|tags|intro|pr)\/(.*)-(\d+)\.html$  index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search\/(name|url|tags|intro|pr)\/(.*)\.html$  index.php\?mod=search&type=$1&query=$2
 
-RewriteRule ^search\/(name|url|tags|intro)\/(.+)/(\d+)$ index.php\?mod=search&type=$1&query=$2&page=$3
-RewriteRule ^search\/(name|url|tags|intro)\/(.+)$ index.php\?mod=search&type=$1&query=$2
+RewriteRule ^search\/(name|url|tags|intro|pr)\/(.+)/(\d+)$ index.php\?mod=search&type=$1&query=$2&page=$3
+RewriteRule ^search\/(name|url|tags|intro|pr)\/(.+)$ index.php\?mod=search&type=$1&query=$2
 
 # 站点详细
 RewriteRule ^siteinfo-(\d+)\.html$ index.php\?mod=siteinfo&wid=$1
