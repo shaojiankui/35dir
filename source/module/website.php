@@ -186,7 +186,7 @@ function get_website_sitemap($cate_id = 0) {
 	}
 
 	$sql = "SELECT web_id, web_url, web_ctime FROM ".$DB->table('websites');
-	$sql .= " WHERE $where ORDER BY web_id DESC LIMIT 50";
+	$sql .= " WHERE $where ORDER BY web_id DESC LIMIT 5000"; //修改sitemap显示条数为5000
 	$query = $DB->query($sql);
 	$results = array();
 	while ($row = $DB->fetch_array($query)) {
