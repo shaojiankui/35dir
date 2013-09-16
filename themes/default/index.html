@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta charset="utf-8">
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/nav.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">var sitepath = '{#$site_root#}'; var rewrite = '{#$cfg.link_struct#}';</script>
+<script type="text/javascript" src="{#$site_root#}public/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="{#$site_root#}public/scripts/common.js"></script>
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	<div id="header">
+    	<div id="topbox">
+    		<a href="{#$site_url#}" class="logo" title="{#$site_title#}"></a>
+            <div id="sobox">
+        	<form name="sofrm" class="sofrm" method="get" action="" onSubmit="return rewrite_search()">
+            	<input name="mod" type="hidden" id="mod" value="search" />
+                <input name="type" type="hidden" id="type" value="name" />
+                <div id="selopt">
+                	<div id="cursel">网站名称</div>
+                    <ul id="options">
+                    	<li><a href="javascript: void(0);" name="name">网站名称</a></li>
+                        <li><a href="javascript: void(0);" name="url">网站地址</a></li>
+                        <li><a href="javascript: void(0);" name="tags">TAG标签</a></li>
+                        <li><a href="javascript: void(0);" name="intro">网站描述</a></li>
+                    </ul>
+                </div>
+				<input name="query" type="text" class="sipt" id="query" onFocus="this.value='';" /><input type="submit" class="sbtn" value="搜 索" />
+			</form>
+			</div>
+        </div>
+        <div id="navbox">
+			<ul class="navbar">
+        		<li><a href="?mod=index">网站首页</a></li><li class="navline"></li>
+                <li><a href="?mod=webdir">网站目录</a></li><li class="navline"></li>
+                <li><a href="?mod=article">站长资讯</a></li><li class="navline"></li>
+                <li><a href="?mod=weblink">链接交换</a></li><li class="navline"></li>
+                <li><a href="?mod=category">分类浏览</a></li><li class="navline"></li>
+                <li><a href="?mod=update">最新收录</a></li><li class="navline"></li>
+                <li><a href="?mod=archives">数据归档</a></li><li class="navline"></li>
+                <li><a href="?mod=top">TOP排行榜</a></li><li class="navline"></li>
+                <li><a href="?mod=feedback">意见反馈</a></li><li class="navline"></li>
+        	</ul>
+        </div>
+        <div id="txtbox">
+        	<div class="count">数据统计：<b>{#$stat.category#}</b>个主题分类，<b>{#$stat.website#}</b>个优秀站点，<b>{#$stat.article#}</b>篇站长资讯</div>
+            <div class="link">快捷方式：<a href="{#$site_root#}member/?mod=website&act=add">网站提交</a> - <a href="{#$site_root#}member/?mod=article&act=add">软文投稿</a> - <a href="{#$site_root#}?mod=diypage&pid=1">帮助中心</a></div>
+        </div>
+    </div>
+    <div class="blank10"></div>
+    <div id="quickbox"><strong>快速审核：</strong>{#foreach from=get_websites(0, 12, true) item=quick#}<a href="{#$quick.web_link#}" title="{#$quick.web_name#}">{#$quick.web_name#}</a>{#/foreach#}</div>
+    <div class="blank10"></div>
+	<div id="homebox">
+		<div id="homebox-left">
+    		<dl id="hcatebox" class="clearfix">
+        		{#foreach from=get_categories() item=cate#}
+                {#if $cate.cate_mod == 'webdir'#}
+        		<dt><a href="{#$cate.cate_link#}">{#$cate.cate_name#}</a></dt>
+            	<dd>
+            		<ul class="hcatelist">
+                		{#foreach from=get_categories($cate.cate_id) item=scate#}
+                		<li><a href="{#$scate.cate_link#}">{#$scate.cate_name#}</a></li>
+                    	{#/foreach#}
+                	</ul>
+            	</dd>
+                {#/if#}
+            	{#/foreach#}
+        	</dl>
+            <div class="blank10"></div>
+			<div id="newbox">
+            	<h3>最新收录</h3>
+                <ul class="newlist">
+                	{#foreach from=get_websites(0, 14) item=new#}
+					<li><span>{#$new.web_ctime#}</span><a href="{#$new.web_link#}" title="{#$new.web_name#}">{#$new.web_name#}</a></li>
+                   	{#/foreach#}
+                </ul>
+            </div>
+    	</div>
+    	<div id="homebox-right">
+    		<div id="bestbox">
+        		<h3><span>站长推荐</span></h3>
+            	<ul class="clearfix bestlist">
+            		{#foreach from=get_websites(0, 35, false, true) item=best#}
+                	<li><a href="{#$best.web_link#}" title="{#$best.web_name#}">{#$best.web_name#}</a></li>
+                	{#/foreach#}
+            	</ul>
+        	</div>
+        	<div class="blank10"></div>
+        	<div id="coolbox" class="clearfix">
+        		<h3>酷站导航</h3>
+            	<ul class="csitelist">
+            		{#foreach from=get_best_categories() item=cate name=csite#}
+                	<li><h4><a href="{#$cate.cate_link#}">{#$cate.cate_name#}</a></h4><a href="{#$cate.cate_link#}" class="more">更多>></a>{#foreach from=get_websites($cate.cate_id, 5) item=cool#}<span><a href="{#$cool.web_link#}" title="{#$cool.web_name#}">{#$cool.web_name#}</a></span>{#/foreach#}</li>
+                    {#if $smarty.foreach.csite.iteration % 5 == 0 && $smarty.foreach.csite.iteration != 20#}
+                    <li class="sline"></li>
+                    {#/if#}
+                	{#/foreach#}
+            	</ul>
+        	</div>
+            <div class="blank10"></div>
+            <div id="rowbox" class="clearfix">
+    			<div id="newsbox">
+        			<h3>站点资讯</h3>
+                	<ul class="newslist">
+                		{#foreach from=get_articles(0, 8, false) item=art#}
+                		<li><span>{#$art.art_ctime#}</span><a href="{#$art.art_link#}">{#$art.art_title#}</a></li>
+                    	{#/foreach#}
+                	</ul>
+        		</div>
+                <div class="line"></div>
+				<div id="exlink">
+            		<h3>链接交换</h3>
+                	<ul class="exlist">
+                		{#foreach from=get_weblinks(0, 8) item=link#}
+						<li><a href="{#$link.web_link#}">{#$link.link_name#} - PR{#$link.web_grank#}，百度权重{#$link.web_brank#}，{#$link.deal_type#}友情链接</a></li>
+                   		{#/foreach#}
+                	</ul>
+                </div>
+            </div>
+    	</div>
+	</div>
+    <div class="blank10"></div>
+	<div id="inbox" class="clearfix">
+      	<h3>最新点入</h3>
+        <ul class="inlist">
+          	{#nocache#}
+          	{#foreach from=get_websites(0, 30, false, false, 'instat') item=instat#}
+			<li><a href="{#$instat.web_link#}" title="{#$instat.web_name#}">{#$instat.web_name#}</a></li>
+            {#/foreach#}
+            {#/nocache#}
+        </ul>
+	</div>
+	<div class="blank10"></div>
+    <div id="linkbox" class="clearfix">
+        <h3>友情链接</h3>
+        <ul class="linklist">
+        	{#foreach from=get_links() item=link#}
+			<li><a href="{#$link.link_url#}" target="_blank">{#$link.link_name#}</a></li>
+            {#/foreach#}
+    	</ul>
+    </div>
+	{#include file="footer.html"#}
+</div>
+</body>
+</html>

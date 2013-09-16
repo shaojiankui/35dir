@@ -1,0 +1,47 @@
+@charset "utf-8";
+@import url("reset.css");
+
+/* custom */
+body {background: url(hbg.png) repeat-x top; color: #555;}
+/* clearfix */
+.clearfix:after {clear: both; content: "."; display: block; height: 0; visibility: hidden;}
+.clearfix {display: inline-table;}
+/* hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+/* input, button */
+.ipt {background: url(ipt.png) no-repeat; border: solid 1px #c9c9c9; font: 14px normal; padding: 6px;}
+.btn {background: #3c8ece; border: solid 1px #2672bc; color: #fff; padding: 3px 10px;}
+a {color: #03c; text-decoration: none;}
+a:hover {color: #f30; text-decoration: underline;}
+#wrapper {margin: 0 auto; width: 950px;}
+#header {height: 80px;}
+.logo {background: url(logo.png) no-repeat; color: #ff0; display: block; float: left; font: 40px normal; height: 80px; width: 200px;}
+#toplink {color: #ccc; float: right; margin: 30px 30px 0 200px;}
+#toplink a {color: #2b7ab8;}
+/* loginform */
+#loginform {border: solid 1px #e8e8e8; padding: 1px;}
+#loginform h2 {background: url(tbg.png) repeat-x; color: #fff; font: bold 14px normal; padding: 10px;}
+#loginform ul {font: 14px normal; margin: 0 auto; padding: 20px 0; width: 350px;}
+#loginform li {padding: 12px 0;}
+#loginform li label {display: block; float: left; padding-top: 8px; text-align: right; width: 70px;}
+#loginform li p {color: #ccc; float: left; font-size: 12px; padding: 8px 0 0 70px;}
+.tipinfo {border-left: solid 1px #dadada; padding: 20px;}
+a.nowlink {background: #f60; border: solid 1px #f30; color: #fff; font-size: 14px; padding: 5px 10px; width: 80px;}
+/* combox */
+#combox {background: #fff;}
+/* regform */
+#regform {border: solid 1px #e8e8e8; padding: 1px;}
+#regform h2 {background: url(tbg.png) repeat-x; color: #fff; font: bold 14px normal; padding: 10px;}
+#regform ul {font: 14px normal; margin: 0 auto; padding: 20px 0; width: 500px;}
+#regform li {padding: 10px 0;}
+#regform li label {display: block; float: left; padding-top: 8px; text-align: right; width: 100px;}
+#regform li p {color: #999; font-size: 12px; padding: 6px 0 0 100px;}
+#regform li span {color: #666; font: 12px normal; padding-left: 5px;}
+.textinfo {background: #fdfdf4; border: dashed 1px #f60; line-height: 30px; margin: 10px; padding: 10px;}
+/* tipbox */
+#tipbox {border: solid 1px #e8e8e8; padding: 1px;}
+#tipbox h2 {background: url(tbg.png) repeat-x; color: #fff; font: bold 14px normal; padding: 10px;}
+#tipbox p {font-size: 14px; padding: 100px 0; text-align: center;}
+/* footer */
+#footer {background: url(fbg.gif) no-repeat top center; margin-top: 10px; padding: 10px; text-align: center;}

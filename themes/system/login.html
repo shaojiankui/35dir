@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{#$pagetitle#}</title>
+<link href="../themes/system/skin/global.css" rel="stylesheet" type="text/css" />
+<link href="../themes/system/skin/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../static/scripts/jquery.js"></script>
+<script type="text/javascript" src="../static/scripts/admin.js"></script>
+</head>
+
+<body>
+<div id="loginbox">
+	<h2>登录入口</h2>
+    <div>
+    <form name="mform" method="post" action="{#$fileurl#}">
+    	<div id="formbox">
+		<table>
+        	<tr>
+				<th>电子邮件：</th>
+				<td><input name="email" type="text" class="ipt" id="email" size="20" maxlength="25" autocomplete="off" /></td>
+			</tr>
+			<tr>
+				<th>登录密码：</th>
+				<td><input name="pass" type="password" class="ipt" id="pass" size="20" maxlength="25" /></td>
+			</tr>
+		</table>
+        </div>
+    	<div id="btnbox">
+		<input name="act" type="hidden" id="act" value="login">
+		<input name="submit" type="submit" class="btn" value="登 陆">&nbsp;
+		<input name="reset" type="reset" class="btn" value="重 填">
+    	</div>
+    </form>
+    </div>
+</div>
+</body>
+</html>

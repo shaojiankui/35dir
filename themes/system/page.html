@@ -1,0 +1,95 @@
+{#include file="header.html"#}
+
+	{#if $action == 'list'#}
+	<h3 class="title"><em>{#$pagetitle#}</em><span><a href="{#$fileurl#}?act=add">+添加新页面</a></span></h3>
+    <div class="listbox">
+        <form name="mform" method="post" action="{#$fileurl#}">
+        <div class="search">
+        	<input name="keywords" type="text" id="keywords" class="ipt" size="30" value="{#$keywords#}" />
+        	<input type="submit" class="btn" value="搜索" />
+        </div>
+        </form>
+        
+        <form name="mform" method="post" action="">
+        <div class="toolbar">
+			<select name="act" id="act" class="sel">
+			<option value="del" style="color: #FF0000;">删除选定</option>
+			</select>
+			<input type="submit" class="btn" value="应用" onClick="if(IsCheck('page_id[]')==false){alert('请指定您要操作的页面ID！');return false;}else{return confirm('确认执行此操作吗？');}">
+		</div>
+                    
+		<table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr>
+				<th><input type="checkbox" id="ChkAll" onClick="CheckAll(this.form)"></th>
+				<th>ID</th>
+				<th>页面名称</th>
+				<th>页面说明</th>
+				<th>操作选项</th>
+			</tr>
+			{#foreach from=$pages item=page#}
+			<tr>
+				<td><input name="page_id[]" type="checkbox" value="{#$page.page_id#}"></td>
+				<td>{#$page.page_id#}</td>
+				<td>{#$page.page_name#}</td>
+				<td>{#$page.page_intro#}</td>
+				<td>{#$page.page_operate#}</td>
+			</tr>
+			{#foreachelse#}
+			<tr><td colspan="5">无任何自定义页面！</td></tr>
+			{#/foreach#}
+		</table>
+		</form>
+        <div class="pagebox">{#$showpage#}</div>
+	</div>
+	{#/if#}
+    
+	{#if $action == 'add' || $action == 'edit'#}
+    <h3 class="title"><em>{#$pagetitle#}</em><span><a href="{#$fileurl#}">返回列表&raquo;</a></span></h3>
+	<div class="formbox">
+    	<form name="mform" method="post" action="{#$fileurl#}">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr>
+				<th>页面名称：</th>
+				<td><input name="page_name" type="text" class="ipt" id="page_name" size="50" maxlength="50" value="{#$page.page_name#}" /></td>
+			</tr>
+			<tr>
+				<th>页面说明：</th>
+				<td><input name="page_intro" type="text" class="ipt" id="page_intro" size="50" maxlength="50" value="{#$page.page_intro#}" /><span class="tips">页面说明，可不填写，字数限制在50个以内</span></td>
+			</tr>
+			<tr>
+				<th>页面内容：</th>
+				<td>
+					<script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="page_content"]', {
+							resizeType : 1,
+							allowPreviewEmoticons : false,
+							allowImageUpload : false,
+							items : [
+								'source', '|', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+								'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+								'insertunorderedlist', '|', 'emoticons', 'link']
+						});
+					});
+                    </script>
+                    <textarea name="page_content" id="page_content" cols="50" rows="6" class="ipt" style="width: 550px; height: 350px; visibility: hidden;">{#$page.page_content#}</textarea>
+                </td>
+			</tr>
+			<tr class="btnbox">
+            	<th>&nbsp;</th>
+				<td>
+					<input name="act" type="hidden" id="act" value="{#$h_action#}">
+					{#if $action == 'edit' && $page.page_id#}
+					<input name="page_id" type="hidden" id="page_id" value="{#$page.page_id#}">
+					{#/if#}
+					<input type="submit" class="btn" value="保 存">&nbsp;
+					<input type="reset" class="btn" value="取 消" onClick="window.location.href='{#$fileurl#}';">
+				</td>
+			</tr>
+		</table>
+        </form>
+	</div>           
+	{#/if#}
+
+{#include file="footer.html"#}

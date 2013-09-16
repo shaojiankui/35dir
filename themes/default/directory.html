@@ -1,0 +1,48 @@
+{#include file="header.html"#}
+
+	<div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+            <div id="scatebox" class="clearfix">
+            	<h2><span>“{#$category_name#}”目录下共收录了 <font color="#FF0000">{#$total#}</font> 个网站</span>目录：{#$category_name#}</h2>
+        		<ul class="scatelist">
+               		{#foreach from=$child_category item=item#}
+            		<li{#if $item.cate_id == $category_id#} class="highlight"{#/if#}><a href="{#$item.cate_link#}" title="{#$item.cate_name#}">{#$item.cate_name#}</a> <em>({#$item.cate_postcount#})</em></li>
+                   	{#/foreach#}
+            	</ul>
+            </div>
+            <div id="listbox" class="clearfix mag">
+            	<h2>“{#$category_name#}”网站目录</h2>
+        		<ul class="sitelist">
+					{#foreach from=$weblist item=w name=list_website#}
+                	<li{#if $smarty.foreach.list_website.iteration % 2 == 0#} class="gray-bg"{#/if#}><a href="{#$w.web_link#}"><img src="{#$w.web_thumb#}" width="100" height="80" alt="{#$w.web_name#}" /></a><div class="info"><h3><a href="{#$w.web_link#}" title="{#$w.web_name#}">{#$w.web_name#}</a></h3><p>{#$w.web_intro#}</p><address><a href="{#$w.web_url#}" target="_blank" class="visit" onclick="clickout({#$w.web_id#})">{#$w.web_url#}</a></address></div><div class="attr">PageRank：<span class="gre">{#$w.web_prank#}</span> / 10<br />AlexaRank：<span class="gre">{#$w.web_arank#}</span><br />人气指数：<span class="org">{#$w.web_views#}</span><br />收录时间：<span class="gre">{#$w.web_utime#}</span></div></li>
+                	{#foreachelse#}
+                	<li>该目录下无任何内容！</li>
+                	{#/foreach#}            
+            	</ul>
+            	<div class="showpage">{#$showpage#}</div>
+            </div>
+        </div>
+        <div id="mainbox-right">
+			<div style="height: 250px;">
+            {#get_adcode(2)#}
+            </div>
+            <div id="bestbox" class="mag">
+            	<h2>推荐站点</h2>
+                <ul class="bestlist">
+                   	{#foreach from=get_websites(0, 5, true) item=best#}
+                   	<li><a href="{#$best.web_link#}"><img src="{#$best.web_thumb#}" width="100" height="80" alt="{#$best.web_name#}" /></a><strong><a href="{#$best.web_link#}" title="{#$best.web_name#}">{#$best.web_name#}</a></strong><p>{#$best.web_intro#}</p><address><a href="{#$best.web_url#}" target="_blank" class="visit" onclick="clickout({#$best.web_id#})">{#$best.web_url#}</a></address></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+            <div id="inbox" class="mag">
+            	<h2>最新点入</h2>
+                <ul class="inlist">
+                	{#foreach from=get_websites(0, 5, false, 'instat') item=instat#}
+                   	<li><strong><a href="{#$instat.web_link#}" title="{#$instat.web_name#}">{#$instat.web_name#}</a></strong><p>{#$instat.web_intro#}</p><address><a href="{#$instat.web_url#}" target="_blank" class="visit" onclick="clickout({#$instat.web_id#})">{#$instat.web_url#}</a></address></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        </div>
+    </div>
+
+{#include file="footer.html"#}

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<div id="siteinfo">
+            	<h1 class="wtitle"><span style="float: right;"></span><a href="{#$web.web_furl#}" target="_blank" onclick="clickout({#$web.web_id#})">{#$web.web_name#}</a></h1>
+				<ul class="wdata"><li class="line"><em style="color: #f00;">{#$web.web_views#}</em>人气指数</li><li class="line"><em style="color: #083;">{#$web.web_grank#}</em>PageRank</li><li class="line"><em style="color: #083;">{#$web.web_brank#}</em>百度权重</li><li class="line"><em style="color: #083;">{#$web.web_srank#}</em>Sogou Rank</li><li class="line"><em style="color: #083;">{#$web.web_arank#}</em>AlexaRank</li><li class="line"><em>{#$web.web_instat#}</em>入站次数</li><li class="line"><em>{#$web.web_outstat#}</em>出站次数</li><li class="line"><em>{#$web.web_ctime#}</em>收录日期</li><li><em style="color: #f60;">{#$web.web_utime#}</em>更新日期</li></ul>
+				<div class="clearfix params">
+					<a href="{#$web.web_furl#}" target="_blank"><img src="{#$web.web_pic#}" width="130" height="110" alt="{#$web.web_name#}" class="wthumb" /></a>
+					<ul class="siteitem">
+						<li><strong>网站地址：</strong><a href="{#$web.web_furl#}" target="_blank" class="visit" onclick="clickout({#$web.web_id#})"><font color="#008000">{#$web.web_url#}</font></a></li>
+            			<li><strong>服务器IP：</strong>{#$web.web_ip#}</li>
+                        <li><strong>网站描述：</strong><span style="line-height: 23px;">{#$web.web_intro#}</span></li>
+                        <li><strong>联系站长：</strong><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={#$user.user_qq#}&amp;site={#$user.nick_name#}&amp;menu=yes" target="_blank"><img border="0" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:{#$user.user_qq#}:41"></a></li>
+                        <li><strong>TAG标签：</strong>{#foreach from=$web_tags item=item#}<a href="{#$item.tag_link#}">{#$item.tag_name#}</a>　{#/foreach#}</li>
+                        <li>{#get_adcode(1)#}</li>
+                        <li><strong>相关查询：</strong><a href="http://tool.adminchn.com/site/{#$web.web_url#}" target="_blank">网站综合信息查询</a>　|　<a href="http://tool.adminchn.com/seo/{#$web.web_url#}" target="_blank">百度近日收录查询</a>　|　<a href="http://tool.adminchn.com/link/{#$web.web_url#}" target="_blank">友情链接查询</a>　|　<a href="http://tool.adminchn.com/pr/{#$web.web_url#}" target="_blank">PR查询</a></li>
+					</ul>
+				</div>
+            </div>
+            <div class="blank10"></div>
+        	<div id="relsite" class="clearfix">
+            	<h2>相关站点</h2>
+               	<ul class="rellist">
+              		{#foreach from=$related_website item=rel#}
+               		<li><a href="{#$rel.web_link#}"><img src="{#$rel.web_pic#}" width="100" height="80" alt="{#$rel.web_name#}" /><strong>{#$rel.web_name#}</strong></a></li>
+               		{#/foreach#}
+              	</ul>
+            </div>
+        </div>
+        <div id="mainbox-right">
+        	<div class="ad250x250">{#get_adcode(1)#}</div>
+            <div class="blank10"></div>
+            <div id="bestart">
+            	<h3>推荐资讯</h3>
+                <ul class="artlist_b">
+                	{#foreach from=get_articles(0, 10) item=art#}
+                	<li><a href="{#$art.art_link#}">{#$art.art_title#}</a></li>
+                    {#/foreach#}
+                </ul>
+            </div>
+            <div class="blank10"></div>
+            <div id="bestweb">
+            	<h3>推荐站点</h3>
+                <ul class="weblist_b">
+                   	{#foreach from=get_websites(0, 5, false, true) item=best#}
+                   	<li><a href="{#$best.web_link#}"><img src="{#$best.web_pic#}" width="100" height="80" alt="{#$best.web_name#}" /></a><strong><a href="{#$best.web_link#}" title="{#$best.web_name#}">{#$best.web_name#}</a></strong><p>{#$best.web_intro#}</p><address><a href="{#$best.web_furl#}" target="_blank" class="visit" onclick="clickout({#$best.web_id#})">{#$best.web_url#}</a></address></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        </div>
+    </div>
+    {#include file="footer.html"#}
+</div>
+
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=ip&wid={#$web.web_id#}"></script>
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=grank&wid={#$web.web_id#}"></script>
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=brank&wid={#$web.web_id#}"></script>
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=srank&wid={#$web.web_id#}"></script>
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=arank&wid={#$web.web_id#}"></script>
+<script type="text/javascript" src="{#$site_root#}?mod=getdata&type=clink&wid={#$web.web_id#}"></script>
+</body>
+</html>

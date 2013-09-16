@@ -1,0 +1,21 @@
+{#include file="header.html"#}
+
+        	<div class="content">
+            	<div class="title">{#$pagename#}</div>
+                <div class="body">
+            		<div class="notice">{#$cfg.site_notice#}</div>
+					<div class="userinfo">
+                		<h3>您好，{#$myself.nick_name#}，欢迎登录{#$site_name#}管理中心！</h3>
+    					<ol>
+    						<li>1. 您现在的会员等级是 <strong>{#$myself.user_type#}</strong>，注册于 {#$myself.join_time#}</li>
+        					<li>2. 目前您共提交 <strong>{#$mystat.website#}</strong> 个站点，<a href="?mod=website&act=add">继续提交>></a></li>
+                            <li>3. 目前您共发布 <strong>{#$mystat.article#}</strong> 篇文章，<a href="?mod=article&act=add">继续发布>></a></li>
+                            <li>4. 目前您共发布 <strong>{#$mystat.weblink#}</strong> 个链接，<a href="?mod=weblink&act=add">继续发布>></a></li>
+                            <li>5. 目前您共收藏 <strong>{#$mystat.favorite#}</strong> 个网站</li>
+        					<li>6. 最后一次登录时间：{#$myself.login_time#}，登录IP：{#$myself.login_ip#}</li>
+    					</ol>
+                	</div>
+                </div>
+            </div>
+
+{#include file="footer.html"#}

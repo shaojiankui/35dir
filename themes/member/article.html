@@ -1,0 +1,69 @@
+{#include file="header.html"#}
+		
+            <div class="content">
+            	<div class="title">{#$pagename#}</div>
+                <div class="body">
+        			{#if $action == 'list'#}
+        			<div id="listbox">
+						<table width="100%" border="0" cellspacing="1" cellpadding="0">
+							<tr>
+								<th>ID</th>
+								<th>所属分类</th>
+								<th>文章标题</th>
+								<th>属性状态</th>
+								<th>发布时间</th>
+								<th>操作选项</th>
+							</tr>
+							{#foreach from=$articles item=row#}
+							<tr>
+								<td>{#$row.art_id#}</td>
+								<td>{#$row.cate_name#}</td>
+								<td class="textleft">{#$row.art_title#}</td>
+								<td>{#$row.art_attr#}</td>
+								<td>{#$row.art_ctime#}</td>
+								<td><a href="?mod=article&act=edit&aid={#$row.art_id#}">修改</a></td>
+							</tr>
+							{#foreachelse#}
+							<tr><td colspan="6">您还未发布任何文章！</td></tr>
+							{#/foreach#}
+						</table>
+					</div>
+        			<div id="showpage" class="clearfix">{#$showpage#}</div>
+        			{#/if#}
+        
+        			{#if $action == 'add' || $action == 'edit'#}
+        			<div id="formbox">
+						<form name="myfrom" id="myfrom" method="post" action="?mod=article">
+        				<ul>
+        					<li><strong>选择分类：</strong><select name="cate_id">{#$category_option#}</select></li>
+        					<li><strong>文章标题：</strong><input name="art_title" type="text" class="ipt" id="art_title" size="50" maxlength="100" value="{#$row.art_title#}" /></li>
+            				<li><strong>TAG标签：</strong><input name="art_tags" type="text" class="ipt" id="art_tags" size="50" maxlength="50" value="{#$row.art_tags#}" onBlur="javascript:this.value=this.value.replace(/，/ig,',');" /></li>
+            				<li><strong>内容来源：</strong><input name="copy_from" type="text" class="ipt" id="copy_from" size="50" maxlength="50" value="{#$row.copy_from#}" /></li>
+							<li><strong>来源地址：</strong><input name="copy_url" type="text" class="ipt" id="copy_url" size="50" maxlength="200" value="{#$row.copy_url#}" /></li>
+							<li><strong>内容摘要：</strong><textarea name="art_intro" cols="50" rows="5" class="ipt" id="art_intro">{#$row.art_intro#}</textarea></li>
+                			<li><strong>文章内容：</strong>
+							<script type="text/javascript">
+							var editor;
+							KindEditor.ready(function(K) {
+							editor = K.create('textarea[name="art_content"]', {
+								resizeType : 1,
+								allowPreviewEmoticons : false,
+								allowImageUpload : true,
+								uploadJson : '?mod=upload&act=upload',
+								items : [
+									'source', '|', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+									'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+									'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'fullscreen']
+								});
+							});
+                    		</script>
+                    		<textarea name="art_content" id="art_content" cols="50" rows="6" class="ipt" style="width: 530px; height: 400px; visibility: hidden;">{#$row.art_content#}</textarea></li>
+            				<li><strong>&nbsp;</strong><input type="hidden" name="art_id" id="art_id" value="{#$row.art_id#}"><input type="hidden" name="do" id="do" value="{#$do#}"><input type="submit" class="btn" value="提 交"> <input type="reset" class="btn" value="重 填"></li>
+        				</ul>
+        				</form>
+    				</div>
+					{#/if#}
+            	</div>
+			</div>
+            
+{#include file="footer.html"#}

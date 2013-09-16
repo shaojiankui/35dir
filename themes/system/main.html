@@ -1,0 +1,58 @@
+{#include file="header.html"#}
+
+    <h3 class="title"><em>用户登录信息</em></h3>
+	<div style="padding: 15px 10px;">{#$myself.user_email#}，登陆时间：{#$myself.login_time#}　登陆IP：{#$myself.login_ip#}　登陆次数： {#$myself.login_count#} 次</div>
+               
+	<h3 class="title"><em>站内数据统计</em></h3>
+    <div style="padding: 10px;">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr height="30">
+				<td width="50%">网站广告：&nbsp;<b style="color: #008800;">{#$stat.adver#}</b>　-　<a href="adver.php">快速管理&raquo;</a></td>
+				<td width="50%">友情链接：&nbsp;<b style="color: #008800;">{#$stat.link#}</b>　-　<a href="link.php">快速管理&raquo;</a></td>
+			</tr>
+			<tr height="30">
+				<td>网站提交：&nbsp;<b style="color: #008800;">{#$stat.apply#}</b>　-　<a href="website.php?status=2">快速管理&raquo;</a></td>
+				<td>意见反馈：&nbsp;<b style="color: #008800;">{#$stat.feedback#}</b>　-　<a href="feedback.php">快速管理&raquo;</a></td>
+			</tr>
+			<tr height="30">
+				<td>分类统计：&nbsp;<b style="color: #008800;">{#$stat.category#}</b>　-　<a href="category.php">快速管理&raquo;</a></td>
+				<td>站点内容：&nbsp;<b style="color: #008800;">{#$stat.website#}</b>　-　<a href="website.php">快速管理&raquo;</a></td>
+			</tr>
+			<tr height="30">
+				<td>文章内容：&nbsp;<b style="color: #008800;">{#$stat.article#}</b>　-　<a href="article.php">快速管理&raquo;</a></td>
+				<td>注册会员：&nbsp;<b style="color: #008800;">{#$stat.user#}</b>　-　<a href="user.php">快速管理&raquo;</a></td>
+			</tr>
+			<tr height="30">
+				<td>自定义页面：&nbsp;<b style="color: #008800;">{#$stat.page#}</b>　-　<a href="page.php">快速管理&raquo;</a></td>
+                <td>自定义标签：&nbsp;<b style="color: #008800;">{#$stat.label#}</b>　-　<a href="label.php">快速管理&raquo;</a></td>
+			</tr>
+		</table>
+	</div>
+                
+	<h3 class="title"><em>服务器信息</em></h3>
+    <div style="padding: 10px;">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr height="30">
+				<td width="50%">服务器时间：&nbsp;{#$server.datetime#}</td>
+				<td width="50%">服务器类型：&nbsp;{#$server.software#}</td>
+			</tr>
+			<tr height="30">
+				<td>PHP版本：&nbsp;{#$server.php_version#}</td>
+				<td>MySQL版本：&nbsp;{#$server.mysql_version#}</td>
+			</tr>
+			<tr height="30">
+				<td>Smarty版本：{#$server.smarty_version#}</td>
+				<td>软件版本：&nbsp;{#$server.soft_version#} - <a href="http://www.35dir.net/" target="_blank">查看更新</a></td>
+			</tr>
+			<tr height="30">
+            	<td>安全模式(safe_mode)：&nbsp;{#$server.safemode#}</td>
+            	<td>全局变量(register_globals)：&nbsp;{#$server.globals#}</td>
+			</tr>
+			<tr height="30">
+            	<td>伪静态(rewrite_module)：&nbsp;{#$server.rewrite#} (只针对Apache有效)</td>
+				<td>内存占用(memory_info)：&nbsp;{#$server.memory_info#}</td>		
+			</tr>
+		</table>
+</div>
+
+{#include file="footer.html"#}

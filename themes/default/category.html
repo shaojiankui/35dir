@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<div id="allcate">
+				{#foreach from=get_categories() item=c#}
+            	<div id="catebox" class="clearfix">
+            		<h2><a href="{#$c.cate_link#}" title="{#$c.cate_name#}">{#$c.cate_name#}</a> <em>({#$c.cate_postcount#})</em></h2>
+            		<ul>
+						{#foreach from=get_categories($c.cate_id) item=sc#}
+                		<li><a href="{#$sc.cate_link#}" title="{#$sc.cate_name#}">{#$sc.cate_name#}</a> <em>({#$sc.cate_postcount#})</em></li>
+                		{#/foreach#}
+                	</ul>
+				</div>
+				{#/foreach#}
+            </div>
+        </div>
+        <div id="mainbox-right">
+        	<div class="ad250x250">{#get_adcode(1)#}</div>
+            <div class="blank10"></div>
+            <div id="bestart">
+            	<h3>推荐资讯</h3>
+                <ul class="artlist_b">
+                	{#foreach from=get_articles(0, 10) item=art#}
+                	<li><a href="{#$art.art_link#}">{#$art.art_title#}</a></li>
+                    {#/foreach#}
+                </ul>
+            </div>
+            <div class="blank10"></div>
+            <div id="bestweb" class="mag">
+            	<h3>推荐站点</h3>
+                <ul class="weblist_b">
+                   	{#foreach from=get_websites(0, 5, false, true) item=best#}
+                   	<li><a href="{#$best.web_link#}"><img src="{#$best.web_pic#}" width="100" height="80" alt="{#$best.web_name#}" /></a><strong><a href="{#$best.web_link#}" title="{#$best.web_name#}">{#$best.web_name#}</a></strong><p>{#$best.web_intro#}</p><address><a href="{#$best.web_furl#}" target="_blank" class="visit" onclick="clickout({#$best.web_id#})">{#$best.web_url#}</a></address></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        </div>
+    </div>
+    {#include file="footer.html"#}
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta property="qc:admins" content="1465354562601124776375" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<div class="topsite" style="margin-right: 10px;">
+            	<h3>入站排行榜 TOP10</h3>
+                <ul class="toplist">
+                   	{#foreach from=get_websites(0, 10, false, false, 'instat') item=instat name=instat_website#}
+                   	<li><span>{#$smarty.foreach.instat_website.iteration#}.</span><a href="{#$instat.web_link#}" title="{#$instat.web_name#}">{#$instat.web_name#}</a> - <em><a href="{#$instat.web_url#}" target="_blank" onclick="clickout({#$instat.web_id#})">{#$instat.web_url#}</a></em></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        	<div class="topsite">
+            	<h3>出站排行榜 TOP10</h3>
+                <ul class="toplist">
+                   	{#foreach from=get_websites(0, 10, false, false, 'outstat') item=outstat name=outstat_website#}
+                   	<li><span>{#$smarty.foreach.outstat_website.iteration#}.</span><a href="{#$outstat.web_link#}" title="{#$outstat.web_name#}">{#$outstat.web_name#}</a> - <em><a href="{#$outstat.web_url#}" target="_blank" onclick="clickout({#$outstat.web_id#})">{#$outstat.web_url#}</a></em></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        	<div class="topsite" style="margin-top: 10px; margin-right: 10px;">
+            	<h3>最新收录 TOP10</h3>
+                <ul class="toplist">
+                   	{#foreach from=get_websites(0, 10, false, false, 'ctime') item=new name=new_website#}
+                   	<li><span>{#$smarty.foreach.new_website.iteration#}.</span><a href="{#$new.web_link#}" title="{#$new.web_name#}">{#$new.web_name#}</a> - <em><a href="{#$new.web_url#}" target="_blank" onclick="clickout({#$new.web_id#})">{#$new.web_url#}</a></em></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        	<div class="topsite" style="margin-top: 10px;">
+            	<h3>热门浏览 TOP10</h3>
+                <ul class="toplist">
+                   	{#foreach from=get_websites(0, 10, false, false, 'views') item=hot name=hot_website#}
+                   	<li><span>{#$smarty.foreach.hot_website.iteration#}.</span><a href="{#$hot.web_link#}" title="{#$hot.web_name#}">{#$hot.web_name#}</a> - <em><a href="{#$hot.web_url#}" target="_blank" onclick="clickout({#$hot.web_id#})">{#$hot.web_url#}</a></em></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        </div>
+        <div id="mainbox-right">
+            <div style="height: 250px;">
+            {#get_adcode(1)#}
+            </div>
+            <div style="margin-top: 15px;">{#get_adcode(1)#}</div>
+        </div>
+    </div>
+    {#include file="footer.html"#}
+</div>
+</body>
+</html>

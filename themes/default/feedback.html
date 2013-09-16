@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<meta name="Copyright" content="Powered By 35dir.com" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+	<div id="subbox" class="clearfix">
+    	<h2>意见/建议反馈</h2>
+       	<ul class="fbform">
+            <form name="fbfrom" id="fbfrom" method="post" action="">
+            <li class="clearfix">
+            	<strong>用户昵称：</strong>
+                <p><input type="text" name="nick" id="nick" class="fipt" size="40" maxlength="50" /></p>
+            </li>
+            <li class="clearfix">
+            	<strong>电子邮件：</strong>
+                <p><input type="text" name="email" id="email" class="fipt" size="40" maxlength="50" /></p>
+            </li>
+            <li class="clearfix">
+            	<strong>意见内容：</strong>
+                <p><textarea name="content" id="content" cols="60" rows="8" class="fipt"></textarea></p>
+            </li>
+            <li class="clearfix">
+            	<strong>验证代码：</strong>
+                <p><input type="text" name="checkcode" id="checkcode" class="fipt" size="6" maxlength="6" onfocus="refreshimg('mycode');" /> <span id="mycode">点击输入框即可显示验证码</span></p>
+            </li>
+            <li>
+            	<input type="hidden" name="action" id="action" value="send">
+                <input type="submit" name="submit" class="fbtn" value="提 交">
+                <input type="reset" name="reset" class="fbtn" value="重 填">
+            </li>
+           </form>
+    	</ul>
+	</div>
+    {#include file="footer.html"#}
+</div>
+</body>
+</html>

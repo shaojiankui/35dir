@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">var sitepath = '{#$site_root#}'; var rewrite = '{#$cfg.is_enabled_rewrite#}';</script>
+<script type="text/javascript" src="{#$site_root#}public/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="{#$site_root#}public/scripts/common.js"></script>
+<script type="text/javascript" src="{#$site_root#}public/editor/kindeditor-min.js"></script>
+<script type="text/javascript" src="{#$site_root#}public/editor/lang/zh_CN.js"></script>
+<link href="{#$site_root#}themes/member/skin/member.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="header">
+    	<div id="topbox">
+    		<a class="logo" title="{#$site_title#}"></a>
+            <div id="sobox">
+        	<form name="sofrm" class="sofrm" method="get" action="" onSubmit="return rewrite_search()">
+            	<input name="mod" type="hidden" id="mod" value="search" />
+                <input name="type" type="hidden" id="type" value="name" />
+                <div id="selopt">
+                	<div id="cursel">网站名称</div>
+                    <ul id="options">
+                    	<li><a href="javascript: void(0);" name="name">网站名称</a></li>
+                        <li><a href="javascript: void(0);" name="url">网站地址</a></li>
+                        <li><a href="javascript: void(0);" name="tags">TAG标签</a></li>
+                        <li><a href="javascript: void(0);" name="intro">网站描述</a></li>
+                    </ul>
+                </div>
+				<input name="query" type="text" class="sipt" id="query" onFocus="this.value='';" /><input type="submit" class="sbtn" value="搜 索" />
+			</form>
+			</div>
+        </div>
+        <div id="navbox">
+			<ul class="navbar">
+        		<li><a href="{#$site_root#}?mod=index">网站首页</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=webdir">网站目录</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=article">站长资讯</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=weblink">链接交换</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=category">分类浏览</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=update">最新收录</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=archives">数据归档</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=top">TOP排行榜</a></li><li class="navline"></li>
+                <li><a href="{#$site_root#}?mod=feedback">意见反馈</a></li><li class="navline"></li>
+        	</ul>
+        </div>
+    </div>
+    <div class="sitepath">{#$site_path#} {#$site_rss#}</div>
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<ul class="sidebar">
+            	<h3>管理中心</h3>
+                <li><a href="{#$site_root#}member/?mod=home" id="icon1">我的首页</a></li>
+                <li><a href="{#$site_root#}member/?mod=website&act=add" id="icon1">提交网站</a></li>
+       			<li><a href="{#$site_root#}member/?mod=website" id="icon2">网站管理</a></li>
+                <li><a href="{#$site_root#}member/?mod=claim" id="icon3">网站认领</a></li>
+       			<li><a href="{#$site_root#}member/?mod=article&act=add" id="icon4">在线投稿</a></li>
+                <li><a href="{#$site_root#}member/?mod=article" id="icon6">我的投稿</a></li>
+                <li><a href="{#$site_root#}member/?mod=weblink&act=add" id="icon5">发布链接</a></li>
+       			<li><a href="{#$site_root#}member/?mod=weblink" id="icon5">链接管理</a></li>
+       			<li><a href="{#$site_root#}member/?mod=favorite" id="icon7">我的收藏夹</a></li>
+                <h3>系统管理</h3>
+       			<li><a href="{#$site_root#}member/?mod=profile" id="icon8">个人资料</a></li>
+       			<li><a href="{#$site_root#}member/?mod=editpwd" id="icon9">修改密码</a></li>
+       			<li><a href="{#$site_root#}member/?mod=logout" id="icon10">安全退出</a></li>
+            </ul>
+        </div>
+        <div id="mainbox-right">

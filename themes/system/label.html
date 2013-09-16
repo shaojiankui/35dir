@@ -1,0 +1,95 @@
+{#include file="header.html"#}
+
+	{#if $action == 'list'#}
+    <h3 class="title"><em>{#$pagetitle#}</em><span><a href="{#$fileurl#}?act=add">+添加新标签</a></span></h3>
+    <div class="listbox">
+        <form name="mform" method="post" action="{#$fileurl#}">
+        <div class="search">
+        	<input name="keywords" type="text" id="keywords" class="ipt" size="30" value="{#$keywords#}" />
+        	<input type="submit" class="btn" value="搜索" />
+        </div>
+        </form>
+        
+        <form name="mform" method="post" action="">
+        <div class="toolbar">
+			<select name="act" id="act" class="sel">
+			<option value="del" style="color: #FF0000;">删除选定</option>
+			</select>
+			<input type="submit" class="btn" value="应用" onClick="if(IsCheck('label_id[]')==false){alert('请指定您要操作的标签ID！');return false;}else{return confirm('确认执行此操作吗？');}">
+		</div>
+                    
+		<table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr>
+				<th><input type="checkbox" id="ChkAll" onClick="CheckAll(this.form)"></th>
+				<th>ID</th>
+				<th>标签名称</th>
+				<th>标签说明</th>
+				<th>操作选项</th>
+			</tr>
+			{#foreach from=$labels item=label#}
+			<tr>
+				<td><input name="label_id[]" type="checkbox" value="{#$label.label_id#}"></td>
+				<td>{#$label.label_id#}</td>
+				<td>{#$label.label_name#}</td>
+				<td>{#$label.label_intro#}</td>
+				<td>{#$label.label_operate#}</td>
+			</tr>
+			{#foreachelse#}
+			<tr><td colspan="5">无任何自定义标签！</td></tr>
+			{#/foreach#}
+		</table>
+		</form>
+        <div class="pagebox">{#$showpage#}</div>
+    </div>
+   {#/if#}
+            
+   {#if $action == 'add' || $action == 'edit'#}
+   <h3 class="title"><em>{#$pagetitle#}</em><span><a href="{#$fileurl#}">返回列表&raquo;</a></span></h3>
+   <div class="formbox">
+		<form name="mform" method="post" action="{#$fileurl#}">
+        <table width="100%" border="0" cellspacing="1" cellpadding="0">
+			<tr>
+				<th>标签名称：</th>
+				<td><input name="label_name" type="text" class="ipt" id="label_name" size="50" maxlength="50" value="{#$label.label_name#}" /><span class="tips">名称只能由英文字母开头，数字，下划线组成</span></td>
+			</tr>
+			<tr>
+				<th>标签说明：</th>
+				<td><input name="label_intro" type="text" class="ipt" id="label_intro" size="50" maxlength="50" value="{#$label.label_intro#}" /><span class="tips">页面说明，可不填写，字数限制在50个以内</span></td>
+			</tr>
+			<tr>
+				<th valign="top">标签内容：</th>
+				<td>
+					<script type="text/javascript">
+					var editor;
+					KindEditor.ready(function(K) {
+						editor = K.create('textarea[name="label_content"]', {
+							resizeType : 1,
+							allowPreviewEmoticons : false,
+							allowImageUpload : false,
+							items : [
+								'source', '|', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+								'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+								'insertunorderedlist', '|', 'emoticons', 'link']
+						});
+					});
+                    </script>
+                    <textarea name="label_content" id="label_content" cols="50" rows="6" class="ipt" style="width: 450px; height: 300px; visibility: hidden;">{#$label.label_content#}</textarea>
+                </td>
+			</tr>
+			<tr class="btnbox">
+            	<th>&nbsp;</th>
+				<td>
+					<input name="act" type="hidden" id="act" value="{#$h_action#}">
+					{#if $action == 'edit' && $label.label_id#}
+					<input name="label_id" type="hidden" id="label_id" value="{#$label.label_id#}">
+					{#/if#}
+					<input type="submit" class="btn" value="保 存">&nbsp;
+					<input type="reset" class="btn" value="取 消" onClick="window.location.href='{#$fileurl#}';">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>           
+	{#/if#}
+
+{#include file="footer.html"#}

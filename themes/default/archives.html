@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<div id="arcbox" class="clearfix">
+				<h3>数据归档</h3>
+				<ul class="arclist">
+					{#foreach from=get_archives() key=year item=arr#}
+                	<li>
+                		<h4>{#$year#}年</h4>
+                    	<p>
+                    		{#foreach from=$arr key=month item=item#}
+                    		<a href="{#$item.arc_link#}" title="{#$year#}年{#$month#}月共有{#$item.site_count#}个站点">{#$month#}月</a>
+                        	{#/foreach#}
+                    	</p>
+                	</li>
+					{#/foreach#}
+				</ul>
+			</div>
+            <div class="blank10"></div>
+            <div id="listbox" class="clearfix">
+            	<h2>{#$pagename#}</h2>
+            	<ul class="sitelist">
+					{#foreach from=$websites item=w name=list#}
+                	<li><a href="{#$w.web_link#}"><img src="{#$w.web_pic#}" width="100" height="80" alt="{#$w.web_name#}" class="thumb" /></a><div class="info"><h3><a href="{#$w.web_link#}" title="{#$w.web_name#}">{#$w.web_name#}</a> {#if $w.web_ispay == 1#}<img src="{#$site_root#}public/images/attr/audit.gif" border="0">{#/if#} {#if $w.web_istop == 1#}<img src="{#$site_root#}public/images/attr/top.gif" border="0">{#/if#} {#if $w.web_isbest == 1#}<img src="{#$site_root#}public/images/attr/best.gif" border="0">{#/if#}</h3><p>{#$w.web_intro#}</p><address><a href="{#$w.web_furl#}" target="_blank" class="visit" onClick="clickout({#$w.web_id#})">{#$w.web_url#}</a> - {#$w.web_ctime#} - <a href="javascript:;" class="addfav" onClick="addfav({#$w.web_id#})" title="点击收藏">收藏</a></address></div></li>
+                	{#foreachelse#}
+                	<li>该目录下无任何内容！</li>
+                	{#/foreach#}
+				</ul>
+            	<div class="showpage">{#$showpage#}</div>
+            </div>
+        </div>
+        <div id="mainbox-right">
+        	<div class="ad250x250">{#get_adcode(1)#}</div>
+            <div class="blank10"></div>
+            <div id="bestart">
+            	<h3>推荐资讯</h3>
+                <ul class="artlist_b">
+                	{#foreach from=get_articles(0, 10) item=art#}
+                	<li><a href="{#$art.art_link#}">{#$art.art_title#}</a></li>
+                    {#/foreach#}
+                </ul>
+            </div>
+            <div class="blank10"></div>
+            <div id="bestweb" class="mag">
+            	<h3>推荐站点</h3>
+                <ul class="weblist_b">
+                   	{#foreach from=get_websites(0, 5, false, true) item=best#}
+                   	<li><a href="{#$best.web_link#}"><img src="{#$best.web_pic#}" width="100" height="80" alt="{#$best.web_name#}" /></a><strong><a href="{#$best.web_link#}" title="{#$best.web_name#}">{#$best.web_name#}</a></strong><p>{#$best.web_intro#}</p><address><a href="{#$best.web_furl#}" target="_blank" class="visit" onclick="clickout({#$best.web_id#})">{#$best.web_url#}</a></address></li>
+                   	{#/foreach#}
+               	</ul>
+            </div>
+        </div>
+    </div>
+    {#include file="footer.html"#}
+</div>
+</body>
+</html>

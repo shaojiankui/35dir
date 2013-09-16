@@ -1,0 +1,39 @@
+	<div id="header">
+    	<div id="topbox">
+    		<a href="{#$site_url#}" class="logo" title="{#$site_title#}"></a>
+            <div id="sobox">
+        	<form name="sofrm" class="sofrm" method="get" action="" onSubmit="return rewrite_search()">
+            	<input name="mod" type="hidden" id="mod" value="search" />
+                <input name="type" type="hidden" id="type" value="name" />
+                <div id="selopt">
+                	<div id="cursel">网站名称</div>
+                    <ul id="options">
+                    	<li><a href="javascript: void(0);" name="name">网站名称</a></li>
+                        <li><a href="javascript: void(0);" name="url">网站地址</a></li>
+                        <li><a href="javascript: void(0);" name="tags">TAG标签</a></li>
+                        <li><a href="javascript: void(0);" name="intro">网站描述</a></li>
+                    </ul>
+                </div>
+				<input name="query" type="text" class="sipt" id="query" onFocus="this.value='';" /><input type="submit" class="sbtn" value="搜 索" />
+			</form>
+			</div>
+        </div>
+        <div id="navbox">
+			<ul class="navbar">
+        		<li><a href="?mod=index">网站首页</a></li><li class="navline"></li>
+                <li><a href="?mod=webdir">网站目录</a></li><li class="navline"></li>
+                <li><a href="?mod=article">站长资讯</a></li><li class="navline"></li>
+                <li><a href="?mod=weblink">链接交换</a></li><li class="navline"></li>
+                <li><a href="?mod=category">分类浏览</a></li><li class="navline"></li>
+                <li><a href="?mod=update">最新收录</a></li><li class="navline"></li>
+                <li><a href="?mod=archives">数据归档</a></li><li class="navline"></li>
+                <li><a href="?mod=top">TOP排行榜</a></li><li class="navline"></li>
+                <li><a href="?mod=feedback">意见反馈</a></li><li class="navline"></li>
+        	</ul>
+        </div>
+        <div id="txtbox">
+        	<div class="count">数据统计：<b>{#$stat.category#}</b>个主题分类，<b>{#$stat.website#}</b>个优秀站点，<b>{#$stat.article#}</b>篇站长资讯</div>
+            <div class="link">快捷方式：<a href="{#$site_root#}member/?mod=website&act=add">网站提交</a> - <a href="{#$site_root#}member/?mod=article&act=add">软文投稿</a> - <a href="{#$site_root#}?mod=diypage&pid=1">帮助中心</a></div>
+        </div>
+    </div>
+    <div class="sitepath"><span style="float: right;">{#get_adcode(1)#}</span>{#$site_path#} {#$site_rss#}</div>

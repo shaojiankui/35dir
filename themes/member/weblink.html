@@ -1,0 +1,60 @@
+{#include file="header.html"#}
+
+            <div class="content">
+            	<div class="title">{#$pagename#}</div>
+                <div class="body">		
+            		{#if $action == 'list'#}
+            		<div id="listbox">
+            			<table width="100%" border="0" cellspacing="1" cellpadding="0">
+            				<tr>
+            					<th>ID</th>
+            					<th>所属分类</th>
+            					<th>链接名称</th>
+            					<th>网站域名</th>
+            					<th>链接状态</th>
+            					<th>提交时间</th>
+            					<th>操作选项</th>
+            				</tr>
+            				{#foreach from=$weblinks item=row#}
+            				<tr>
+            					<td>{#$row.link_id#}</td>
+            					<td>{#$row.cate_name#}</td>
+            					<td>{#$row.link_name#}</td>
+            					<td>{#$row.web_url#}</td>
+            					<td>{#$row.link_status#}</td>
+            					<td>{#$row.link_time#}</td>
+            					<td><a href="?mod=weblink&act=edit&lid={#$row.link_id#}">修改</a> | <a href="?mod=weblink&act=del&lid={#$row.link_id#}" onClick="return confirm('确认执行此操作吗？');">删除</a></td>
+            				</tr>
+            				{#foreachelse#}
+            				<tr><td colspan="7">您还未发布任何链接！</td></tr>
+            				{#/foreach#}
+            			</table>
+            		</div>
+					<div id="showpage" class="clearfix">{#$showpage#}</div>
+					{#/if#}
+        
+        			{#if $action == 'add' || $action == 'edit'#}
+        			<div id="formbox">
+						<form name="myfrom" id="myfrom" method="post" action="?mod=weblink">
+        				<ul>
+        					<li><strong>选择站点：</strong><select name="web_id">{#$weburl_option#}</select></li>
+        					<li><strong>交易类型：</strong>{#$dealtype_radio#}</li>
+                            <li><strong>链接名称：</strong><input type="text" name="link_name" id="link_name" class="ipt" size="30" maxlength="20" value="{#$row.link_name#}" /><span class="tips">链接名称最多20个字符</span></li>
+            				<li><strong>链接类型：</strong>{#$linktype_radio#}</li>
+                			<li><strong>链接位置：</strong>{#$linkpos_radio#}</li>
+                			<li><strong>链接价格：</strong><input type="text" name="link_price" id="link_price" class="ipt" size="10" maxlength="5" value="{#$row.link_price#}" /> / 月<span class="tips">0为商谈</span></li>
+                			<li><strong>要 求 一：</strong>对方网站百度收录必须超过 <input type="text" name="link_if1" id="link_if1" class="ipt" size="10" maxlength="10" value="{#$row.link_if1#}" /> 条</li>
+                			<li><strong>要 求 二：</strong>对方Google PageRank值>= <input type="text" name="link_if2" id="link_if2" class="ipt" size="10" maxlength="2" value="{#$row.link_if2#}" /><span class="tips">PR值范围：1~9，0为不限</span></li>
+                			<li><strong>要 求 三：</strong>对方首页在百度的快照时间不超过 <input type="text" name="link_if3" id="link_if3" class="ipt" size="10" maxlength="2" value="{#$row.link_if3#}" /> 天</li>
+                			<li><strong>要 求 四：</strong>对方首页外链不得超过 <input type="text" name="link_if4" id="link_if4" class="ipt" size="10" maxlength="2" value="{#$row.link_if4#}" /> 个</li>
+            				<li><strong>链接说明：</strong><textarea name="link_intro" id="link_intro" cols="50" rows="6" class="ipt">{#$row.link_intro#}</textarea></li>
+							<li><strong>过期时间：</strong><input type="text" name="link_days" id="link_days" class="ipt" size="10" maxlength="3" value="{#$row.link_days#}" /> 天后过期<span class="tips">为0将长期有效</span></li>
+            				<li><strong>&nbsp;</strong><input type="hidden" name="link_id" id="link_id" value="{#$row.link_id#}"><input type="hidden" name="do" id="do" value="{#$do#}"><input type="submit" class="btn" value="提 交"> <input type="reset" class="btn" value="重 填"></li>
+        				</ul>
+        				</form>
+    				</div>
+					{#/if#}
+            	</div>
+			</div>
+            
+{#include file="footer.html"#}

@@ -1,0 +1,120 @@
+@charset "utf-8";
+@import url("reset.css");
+
+/* global */
+body {background: #fff url(bg.png) repeat-x top;}
+body, td, th, input, select, textarea {color: #555; font: 12px/1.5 "微软雅黑";}
+a {color: #555; text-decoration: none;}
+a:hover {color: #f30; text-decoration: underline;}
+.blank10 {clear: both; display: block; height: 10px; width: 100%;}
+/* topbg */
+#topbg {height: 32px; line-height: 32px;}
+#topbar {margin: 0 auto; width: 950px;}
+#topbar-left {float: left;}
+#topbar-right {color: #ccc; float: right;}
+#topbar-right img {vertical-align: middle;}
+/* wrapper */
+#wrapper {margin: 0 auto; width: 950px;}
+/* topbox */
+#topbox {height: 100px;}
+/* logo */
+.logo {background: url(logo.png) center; display: block; float: left; height: 100px; width: 200px;}
+/* sobox */
+#sobox {float: right; padding-top: 20px;}
+.sofrm {display: block; margin: 0px auto; padding-top: 14px; position: relative; width: 500px;}
+.sipt {background: url(ipt.png) no-repeat top left; border: solid 1px #dadada; display: block; font: normal 13px/30px normal; float: left; height: 30px; padding: 0 5px 0 90px; width: 300px;}
+.sbtn {background: #65bc0b; border: 0; color: #fff; cursor: pointer; font-size: 14px; height: 32px; width: 70px;}
+/* selopt */
+#selopt {background: url(select.gif) no-repeat; position: absolute; left: 2px; top: 17px; width: 88px;}
+#cursel {cursor: pointer; display: block; height: 28px; line-height: 28px; overflow: hidden; text-indent: 12px; width: 85px;}
+#options {border: solid 1px #dadada; border-top: 0; display: none; list-style: none; position: absolute; left: -2px; width: 80px; z-index: 1000;}
+#options li {background: #fff; clear: both; cursor: pointer;}
+#options li a {color: #555; display: block; height: 25px; line-height: 25px; text-decoration: none; text-align: center;}
+#options li a:hover {background: #1791de; color: #fff; display: block; text-decoration: none;}
+.current {background: #1791de; color: #fff; display: block; text-decoration: none;}
+/* navbox */
+#navbox {background: url(blue.png) repeat-x; display: block; height: 35px;}
+.navbar {}
+.navbar li {float: left; font: 14px/35px "微软雅黑"; height: 35px; text-align: center; width: 100px;}
+.navbar li a {display: block; color: #fff;}
+.navbar li a:hover {background: #0080c6; display: block; color: #fff;}
+.navbar .navline {background: #0797e5; display: block; height: 35px; width: 1px;}
+.navbar .cur {background: #0067ae;}
+/* txtbox */
+#txtbox {background: url(blue.png) repeat-x 0 -55px; border-left: solid 1px #dae7ed; border-right: solid 1px #dae7ed; height: 40px;}
+.count {float: left; padding: 10px;}
+.count b {color: #f60; font: bold 16px Arial; padding-right: 3px;}
+.link {color: #999; float: right; padding: 10px;}
+.link a {color: #06c;}
+/* quickbox */
+#quickbox {background: #f9fef4; border: dashed 1px #cbe6bd; overflow: hidden; padding: 6px; white-space: nowrap;}
+#quickbox strong {}
+#quickbox a {margin-right: 15px;}
+/* homebox */
+#homebox {}
+#homebox-left {float: left; width: 250px;}
+#homebox-right {float: right; width: 690px;}
+/* hcatebox */
+#hcatebox {background: #f8fdff; border: solid 1px #dae7ed; padding: 8px;}
+#hcatebox dt {clear: both; display: block; font: bold 14px/25px "微软雅黑"; height: 25px;}
+#hcatebox dt a {color: #07c;}
+#hcatebox dd {}
+.hcatelist {}
+.hcatelist li {float: left; height: 30px; line-height: 30px; text-align: center; width: 56px;}
+.hcatelist li a {font-size: 13px;}
+/* newbox */
+#newbox {border: solid 1px #dae7ed;}
+#newbox h3 {background: #f8fdff; border-bottom: dashed 1px #dae7ed; color: #07c; font-size: 14px; padding: 6px;}
+.newlist {padding: 3px 8px;}
+.newlist li {padding: 5px 0; white-space: nowrap;}
+.newlist li a {display: block; overflow: hidden; width: 150px;}
+.newlist li span {color: #ccc; float: right;}
+/* bestbox */
+#bestbox {border: solid 1px #dae7ed;}
+#bestbox h3 {background: #f8fdff; border-bottom: solid 1px #dae7ed; font: bold 14px normal; height: 30px;}
+#bestbox h3 span {background: #fff; border: solid 1px #cedee6; border-bottom: 0; color: #07c; display: block; float: left; height: 25px; line-height: 25px; margin-left: 5px; margin-top: 5px; text-align: center; width: 80px;}
+.bestlist {padding: 8px;}
+.bestlist li {display: block; float: left; height: 30px; line-height: 30px; margin-right: 14px; overflow: hidden; text-align: center; white-space: nowrap; width: 120px;}
+.bestlist li a {font-size: 13px;}
+/* coolbox */
+#coolbox {border: solid 1px #dae7ed;}
+#coolbox h3 {background: #f8fdff; border-bottom: dashed 1px #dae7ed; color: #07c; font-size: 14px; padding: 6px;}
+.csitelist {padding: 5px 8px;}
+.csitelist li {display: block; font-size: 14px; height: 30px; overflow: hidden; vertical-align: top; width: 100%;}
+.csitelist li h4 {display: block; float: left; font-weight: normal; height: 30px; line-height: 30px;margin-right: 10px}
+.csitelist li h4 a {color: #07c;}
+.csitelist li span {display: block; float: left; height: 30px; line-height: 30px; margin-right: 20px; overflow: hidden; white-space: nowrap; width: 96px;}
+.csitelist li span a {font-size: 13px;}
+.csitelist .more {color: #07c; float: right; font-size: 12px; line-height: 30px;}
+.sline {background: url(dot.gif) repeat-x center; display: block; height: 10px;}
+/* rowbox */
+#rowbox {border: solid 1px #dae7ed; padding: 10px;}
+/* newsbox */
+#newsbox {float: left; width: 320px;}
+#newsbox h3 {color: #07c; font-size: 14px; padding-bottom: 6px;}
+.newslist {}
+.newslist li {padding: 6px 0;}
+.newslist li span {color: #ccc; float: right; font-size: 10px;}
+/* exlink */
+#exlink {float: right; width: 320px;}
+#exlink h3 {color: #07c; font-size: 14px; padding-bottom: 6px;}
+.exlist {}
+.exlist li {padding: 6px 0; white-space: nowrap; overflow: hidden;}
+.exlist li span {color: #ccc; float: right;}
+.line {border-left: dashed 1px #dadada; float: left; height: 210px; margin-left: 10px; width: 1px;}
+/* inbox */
+#inbox {background: #f8fdff; border: solid 1px #dae7ed; padding: 5px 8px;}
+#inbox h3 {float: left; height: 23px; line-height: 23px; width: 60px;}
+.inlist {}
+.inlist li {float: left; height: 23px; line-height: 23px; margin-right: 20px; white-space: nowrap;}
+/* linkbox */
+#linkbox {background: #f8fdff; border: solid 1px #dae7ed; padding: 5px 8px;}
+#linkbox h3 {float: left; height: 23px; line-height: 23px; width: 60px;}
+.linklist {}
+.linklist li {float: left; height: 23px; line-height: 23px; margin-right: 20px; vertical-align: top; white-space: nowrap;}
+/* footer */
+#footer {background: url(fbg.png) repeat-x; padding: 10px; text-align: center;}
+#fmenu {color: #ccc; padding-bottom: 5px;}
+#fmenu a {text-decoration: none;}
+#fmenu a:hover {color: #f60; text-decoration: underline;}
+#fcopy {line-height: 23px;}

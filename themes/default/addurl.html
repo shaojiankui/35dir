@@ -1,0 +1,53 @@
+{#include file="header.html"#}
+
+	<div id="mainbox" class="clearfix mtop10">
+		<div id="subbox">
+		<div style="line-height: 25px; padding: 10px 20px;">
+        <strong style="color: #f00;">提交须知：</strong><br />
+1. 不收录有反动、色情、赌博等不良内容或提供不良内容链接的网站，以及网站名称或内容违反国家有关政策法规的网站；<br />
+2. 不收录含有病毒、木马，弹出插件或恶意更改他人电脑设置的网站、及有多个弹窗广告的网站；<br />
+3. 不收录网站名称和实际内容不符的网站，如贵站正在建设中，或尚未明确主题的网站，请不必现在申请收录，欢迎您在贵站建设完毕后再申请；<br />
+4. 不收录以同类型网站通用名称文字作为申请的名称，例如“在线音乐”，请以适当的网站名做为申请名称；<br />
+5. 不收入非顶级域名、挂靠其他站点、无实际内容，只提供域名指向的网站或仅有单页内容的网站；<br />
+6. 不收录在正常情况下无法访问的网站；<br />
+7. 公益性网站，或内容确实有独特之处的网站将优先收录；<br />
+<span style="color: #f00;"><strong>特别提示：</strong><br />
+为了达到共赢的效果，凡是申请收录的网站，请在其首页设置 “35分类目录” 的文字或图片友情链接；<br />
+本站会定期对已收录网站进行复审，对不符合要求（包括短期链接欺骗收录行为）的网站，本站将随时删除该站信息。</span><br />
+			<table width="100%" style="background: #FCFCFC; border: solid 1px #DFDFDF;">
+				<tr style="font-weight: bold;">
+					<td height="30" align="center">代码样式</td>
+					<td>复制以下代码到指定位置</td>
+				</tr>
+				<tr>
+					<td width="15%" height="40" align="center"><a href="{#$site_url#}" target="_blank" title="{#$site_name#}">{#$site_name#}</a></td>
+					<td><textarea name="textarea" id="textarea" rows="1" onmouseover="this.select();" style="border: solid 1px #dadada; font: normal 11px Lucida Grande; width: 98%;" readonly><a href="{#$site_url#}" target="_blank" title="{#$site_title#}">{#$site_name#}</a></textarea></td>
+				</tr>
+				<tr>
+					<td height="60" align="center"><a href="{#$site_url#}" target="_blank"><img src="{#$site_url#}logo.gif" align="absmiddle" border="0" height="31" width="88" alt="{#$site_name#}" /></a></td>
+					<td><textarea name="textarea" id="textarea" rows="2" onmouseover="this.select();" style="border: solid 1px #dadada; font: normal 11px Lucida Grande; width: 98%;" readonly><a href="{#$site_url#}" target="_blank"><img src="{#$site_url#}logo.gif" align="absmiddle" border="0" height="31" width="88" alt="{#$site_name#}" /></a></textarea></td>
+				</tr>
+			</table>
+			</div>
+            
+            {#if $cfg.is_enabled_submit == 'yes'#}
+            <form name="myfrom" id="myfrom" method="post" action="{#$pageurl#}">
+            <ul class="formbox">
+            	<li><strong>选择分类：</strong><p><select name="cate_id">{#$category_option#}</select></p></li>
+                <li><strong>网站域名：</strong><p><input type="text" name="web_url" id="web_url" class="fipt" size="50" maxlength="100" onblur="checkurl(this.value)" /> <span id="msg">例：www.35dir.com</span></p></li>
+            	<li><strong>网站名称：</strong><p><input type="text" name="web_name" id="web_name" class="fipt" size="50" maxlength="50" /> <span id="msg">例：35分类目录</span></p></li>
+                <li><strong>TAG标签：</strong><p><input type="text" name="web_tags" id="web_tags" class="fipt" size="50" maxlength="30" onblur="javascript:this.value=this.value.replace(/，/ig,',');" /> <span>例：旅游,酒店,机票,度假</span></p></li>
+            	<li><strong>网站简介：</strong><p><textarea name="web_intro" id="web_intro" cols="50" rows="6" class="fipt"></textarea></p></li>
+                <li><strong>站长姓名：</strong><p><input type="text" name="web_owner" id="web_owner" class="fipt" size="30" maxlength="20" /></p></li>
+                <li><strong>电子邮箱：</strong><p><input type="text" name="web_email" id="web_email" class="fipt" size="30" maxlength="50" /></p></li>
+            	<li><strong>验 证 码：</strong><p><input type="text" name="check_code" id="check_code" size="10" maxlength="5" class="fipt" onfocus="refreshimg('mycode');" /> <span id="mycode">点击输入框即可显示验证码</span></p></li>
+            	<li><strong>&nbsp;</strong><p><input type="hidden" name="act" id="act" value="submit"><input type="submit" name="submit" class="fbtn" value="提 交"> <input type="reset" name="reset" class="fbtn" value="重 填"></p></li>
+            </ul>
+            {#else#}
+            {#$cfg.submit_close_reason#}
+            {#/if#}
+           </form>
+		</div>
+    </div>
+
+{#include file="footer.html"#}

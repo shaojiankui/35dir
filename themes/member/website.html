@@ -1,0 +1,62 @@
+{#include file="header.html"#}
+
+            <div class="content">
+            	<div class="title">{#$pagename#}</div>
+                <div class="body">
+            		{#if $action == 'list'#}
+                	<div id="listbox">
+						<table width="100%" border="0" cellspacing="1" cellpadding="0">
+							<tr>
+								<th>ID</th>
+								<th>所属分类</th>
+								<th>网站名称</th>
+								<th>网站地址</th>
+								<th>属性状态</th>
+								<th>提交时间</th>
+								<th>操作选项</th>
+							</tr>
+							{#foreach from=$websites item=web#}
+							<tr>
+								<td>{#$web.web_id#}</td>
+								<td>{#$web.cate_name#}</td>
+								<td class="textleft">{#$web.web_name#}</td>
+								<td class="textleft">{#$web.web_url#}</td>
+								<td style="color: #FF0000;">{#$web.web_status#}</td>
+								<td>{#$web.web_ctime#}</td>
+								<td><a href="?mod=website&act=edit&wid={#$web.web_id#}">修改</a></td>
+							</tr>
+							{#foreachelse#}
+							<tr><td colspan="7">您还未提交任何站点！</td></tr>
+							{#/foreach#}
+						</table>
+					</div>
+        			<div id="showpage" class="clearfix">{#$showpage#}</div>
+        			{#/if#}
+        
+        			{#if $action == 'add' || $action == 'edit'#}
+        			{#if $cfg.is_enabled_submit == 'yes'#}
+        			<div id="formbox">
+						<form name="myfrom" id="myfrom" method="post" action="?mod=website">
+        				<ul>
+        					<li><strong>选择分类：</strong><select name="cate_id">{#$category_option#}</select></li>
+        					<li><strong>网站名称：</strong><input type="text" name="web_name" id="web_name" class="ipt" size="50" maxlength="50" value="{#$web.web_name#}" /></li>
+            				<li><strong>网站域名：</strong><input type="text" name="web_url" id="web_url" class="ipt" size="50" maxlength="100" value="{#$web.web_url#}" onblur="checkurl(this.value)" /><input type="button" class="btn" id="meta_btn" value="抓取Meta" onclick="getmeta()"></li>
+            				<li><strong>TAG标签：</strong><input type="text" name="web_tags" id="web_tags" class="ipt" size="50" maxlength="50" value="{#$web.web_tags#}" onBlur="javascript:this.value=this.value.replace(/，/ig,',');" /></li>
+            				<li><strong>网站简介：</strong><textarea name="web_intro" id="web_intro" cols="50" rows="6" class="ipt">{#$web.web_intro#}</textarea></li>
+							<li><strong>服务器IP：</strong><input name="web_ip" type="text" class="ipt" id="web_ip" size="30" maxlength="30" value="{#$web.web_ip#}" readonly /><input type="button" class="btn" id="data_btn" value="获取数据" onclick="getdata()"></li>
+							<li><strong>PageRank：</strong><input name="web_grank" type="text" class="ipt" id="web_grank" size="10" maxlength="2" value="{#(!$web.web_grank) ? '0' : $web.web_grank#}" readonly /></li>
+                            <li><strong>BaiduRank：</strong><input name="web_brank" type="text" class="ipt" id="web_brank" size="10" maxlength="2" value="{#(!$web.web_brank) ? '0' : $web.web_brank#}" readonly /></li>
+                			<li><strong>SogouRank：</strong><input name="web_srank" type="text" class="ipt" id="web_srank" size="10" maxlength="2" value="{#(!$web.web_srank) ? '0' : $web.web_srank#}" readonly /></li>
+							<li><strong>AlexaRank：</strong><input name="web_arank" type="text" class="ipt" id="web_arank" size="10" maxlength="10" value="{#(!$web.web_arank) ? '0' : $web.web_arank#}" readonly /></li>
+            				<li><strong>&nbsp;</strong><input type="hidden" name="web_id" id="web_id" value="{#$web.web_id#}"><input type="hidden" name="do" id="do" value="{#$do#}"><input type="submit" class="btn" value="提 交"> <input type="reset" class="btn" value="重 填"></li>
+        				</ul>
+        				</form>
+    				</div>
+        			{#else#}
+        			<div style="background: #ffc; border: dashed 1px #f30; color: #f00; padding: 20px; text-align: center;">{#$cfg.submit_close_reason#}</div>
+        			{#/if#}
+					{#/if#}
+                </div>
+            </div>
+            
+{#include file="footer.html"#}

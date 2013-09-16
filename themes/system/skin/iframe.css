@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* custom */
+body {background: #be0a0a; font-family: 微软雅黑;}
+#wrapper {margin: 0 auto; width: 100%;}
+/* header */
+#header {height: 70px;}
+#logo {background: url(logo.png) no-repeat; float: left; height: 70px; width: 200px;}
+#link {color: #fff; margin-left: 200px; padding: 25px 20px 0px 0px; text-align: right;}
+#link a {color: #fff; text-decoration: none;}
+/* mainer */
+#mainer {padding: 0 5px;}
+#mainer-left {float: left; width: 170px;}
+#mainer-right {margin-left: 175px;}
+#sidebar {background: #fee; border: solid 1px #a11414; overflow-y: auto;}
+#content {background: #fee; border: solid 1px #a11414; _zoom: 1}
+#main_frame {height: 100%; width: 100%;}

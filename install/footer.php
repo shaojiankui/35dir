@@ -1,0 +1,1 @@
+<div class="foot">Copyright &copy; 2008-2012 35分类目录 (35dir.com)</div>

@@ -1,0 +1,122 @@
+@charset "utf-8";
+@import url("reset.css");
+
+/* custom */
+body {background: #c6eaff;}
+body, td, th, input, select, textarea {color: #666; font: 12px/1.5 "微软雅黑";}
+a {color: #07c; text-decoration: none;}
+a:hover {color: #f30; text-decoration: underline;}
+.blank10 {display: block; height: 10px; width: 100%;}
+.ipt {background: url(ipt.png) no-repeat; border: solid 1px #c9c9c9; font: 14px normal; padding: 5px; vertical-align: middle;}
+.btn {background: #08c; border: 0; color: #fff; height: 28px; padding: 0 7px;}
+.tips {color: #999; padding-left: 10px;}
+/* clearfix */
+.clearfix:after {clear: both; content: "."; display: block; height: 0; visibility: hidden;}
+.clearfix {display: inline-table;}
+/* hides from IE-mac \*/
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+/* wrapper */
+#wrapper {background: #fff; margin: 0 auto; width: 950px;}
+/* header */
+#header {}
+#topbox {height: 100px;}
+.logo {background: url(logo.png) center; display: block; float: left; height: 100px; width: 200px;}
+/* sobox */
+#sobox {float: right; padding-top: 20px;}
+.sofrm {display: block; margin: 0px auto; padding-top: 14px; position: relative; width: 500px;}
+.sipt {background: url(ipt.png) no-repeat top left; border: solid 1px #dadada; display: block; font: normal 13px/30px normal; float: left; height: 30px; padding: 0 5px 0 90px; width: 300px;}
+.sbtn {background: #65bc0b; border: 0; color: #fff; cursor: pointer; font-size: 14px; height: 32px; width: 70px;}
+/* selopt */
+#selopt {background: url(select.gif) no-repeat; position: absolute; left: 2px; top: 17px; width: 88px;}
+#cursel {cursor: pointer; display: block; height: 28px; line-height: 28px; overflow: hidden; text-indent: 12px; width: 85px;}
+#options {border: solid 1px #dadada; border-top: 0; display: none; list-style: none; position: absolute; left: -2px; width: 80px; z-index: 1000;}
+#options li {background: #fff; clear: both; cursor: pointer;}
+#options li a {color: #555; display: block; height: 25px; line-height: 25px; text-decoration: none; text-align: center;}
+#options li a:hover {background: #1791de; color: #fff; display: block; text-decoration: none;}
+.current {background: #1791de; color: #fff; display: block; text-decoration: none;}
+/* login */
+#login {color: #fff; float: right; padding: 8px; text-align: right;}
+#login a {color: #fff;}
+/* navbox */
+#navbox {background: url(blue.png) repeat-x; display: block; height: 35px;}
+.navbar {}
+.navbar li {float: left; font: 14px/35px "微软雅黑"; height: 35px; text-align: center; width: 100px;}
+.navbar li a {display: block; color: #fff;}
+.navbar li a:hover {background: #0080c6; display: block; color: #fff;}
+.navbar .navline {background: #0797e5; display: block; height: 35px; width: 1px;}
+.navbar .cur {background: #0067ae;}
+/* txtbox */
+#txtbox {background: url(blue.png) repeat-x 0 -55px; border-left: solid 1px #e2ecf1; border-right: solid 1px #e2ecf1; height: 40px;}
+.count {float: left; padding: 10px;}
+.count b {color: #f60; font: bold 16px Arial; padding-right: 3px;}
+.link {color: #999; float: right; padding: 10px;}
+.link a {color: #07c;}
+/* sitepath */
+.sitepath {padding-top: 10px; padding-left: 10px;}
+/* mainbox */
+#mainbox {padding: 10px;}
+#mainbox-left {float: left; width: 150px;}
+#mainbox-right {float: right; width: 770px;}
+/* sidebar */
+.sidebar {border: solid 1px #e8e8e8; padding-bottom: 10px;}
+.sidebar h3 {background: url(blue.png) repeat-x 0 -65px; padding: 6px;}
+.sidebar li {border-bottom: dashed 1px #ccc; margin: 0 10px; padding: 7px 0 7px 25px;}
+/* content */
+.content {border: solid 1px #e8e8e8;}
+.title {background: url(blue.png) repeat-x 0 -95px; padding: 7px;}
+.body {padding: 10px;}
+/* icon */
+#icon1 {background: url(icon.gif) 0px 0px no-repeat; padding-left: 20px;}
+#icon2 {background: url(icon.gif) 0px -16px no-repeat; padding-left: 20px;}
+#icon3 {background: url(icon.gif) 0px -48px no-repeat; padding-left: 20px;}
+#icon4 {background: url(icon.gif) 0px -31px no-repeat; padding-left: 20px;}
+#icon5 {background: url(icon.gif) 0px -76px no-repeat; padding-left: 20px;}
+#icon6 {background: url(icon.gif) 0px -63px no-repeat; padding-left: 20px;}
+#icon7 {background: url(icon.gif) 0px -92px no-repeat; padding-left: 20px;}
+#icon8 {background: url(icon.gif) 0px -109px no-repeat; padding-left: 20px;}
+#icon9 {background: url(icon.gif) 0px -125px no-repeat; padding-left: 20px;}
+#icon10 {background: url(icon.gif) 0px -141px no-repeat; padding-left: 20px;}
+/* notice */
+.notice {background: #ffc; border: dashed 1px #f60; padding: 15px; text-align: center;}
+.userinfo {margin-top: 15px;}
+.userinfo h3 {font-size: 14px; padding-bottom: 10px;}
+.userinfo li {padding: 6px 0;}
+.userinfo li strong {color: #f30; font: normal 20px Arial;}
+#homebox {padding: 10px;}
+#homebox h2 {font: bold 14px normal;}
+#homebox ol {padding: 10px 0;}
+#homebox ol li {font-size: 13px; padding: 5px 0;}
+#homebox ol li strong {color: #f00;}
+/* listbox */
+#listbox {}
+#listbox table {}
+#listbox table tr th {background: #f9f9f9; height: 30px;}
+#listbox table tr td {background: #fff; border-bottom: solid 1px #ececec; height: 30px; text-align: center;}
+#listbox table tr .ltext {text-align: left;}
+#listbox table tr .data {font-size: 10px;}
+.red {color: #f00;}
+.gre {color: #080;}
+.org {color: #f60;}
+/* showpage */
+#showpage {display: block; font-size: 12px; text-align: left; padding: 10px 0;}
+.total_page, .jump_page {background: #1678bd; border: solid 1px #096cb2; color: #fff; display: block; float: left; margin-right: 5px; padding: 3px 5px;}
+.first_page, .last_page, .prev_page, .next_page, .pages {background: #fff; border: 1px solid #096cb2; color: #486ba2; display: block; float: left; margin-right: 5px; padding: 3px 5px; text-decoration: none;}
+.current {background: #1678bd; color: #fff; display: block; float: left; margin-right: 5px; padding: 4px 5px;}
+/* formbox */
+#formbox {margin-left: 50px;}
+#formbox ul {padding-bottom: 10px;}
+#formbox li {padding: 10px;}
+#formbox li strong {display: block; float: left; font-weight: normal; text-align: right; width: 90px;}
+#formbox li p {color: #ccc; float: left; padding: 8px 0 0 90px;}
+/* claimbox */
+#claimbox {}
+#claimbox table {border: solid 1px #e8e8e8;}
+#claimbox table tr th {background: #eff9ff; font-weight: normal; padding: 8px; text-align: left;}
+#claimbox table tr td {background: #fefefe; line-height: 23px; padding: 8px;}
+/* step */
+.step {}
+.step dt {border-bottom: solid 1px #e1e1e1; font: normal 20px normal; padding: 10px;}
+.step dd {padding: 10px;}
+/* footer */
+#footer {background: url(fbg.gif) no-repeat; color: #555; height: 80px; padding: 10px; text-align: center;}

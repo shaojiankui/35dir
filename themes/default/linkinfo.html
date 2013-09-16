@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{#$site_title#}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{#$site_keywords#}" />
+<meta name="Description" content="{#$site_description#}" />
+<link href="{#$site_root#}themes/default/skin/style.css" rel="stylesheet" type="text/css" />
+{#include file="script.html"#}
+</head>
+
+<body>
+{#include file="topbar.html"#}
+<div id="wrapper">
+	{#include file="header.html"#}
+    <div id="mainbox" class="clearfix">
+    	<div id="mainbox-left">
+        	<div id="linkinfo">
+            	<h1 class="linkname"><span style="float: right;"><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={#$user.user_qq#}&amp;site={#$user.nick_name#}&amp;menu=yes" target="_blank"><img border="0" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:{#$user.user_qq#}:41"></a></span>{#$link.link_name#}({#$link.web_url#})</h1>
+				<div class="clearfix params">
+					<a href="{#$link.web_url#}" target="_blank"><img src="{#$link.web_pic#}" width="130" height="110" alt="{#$link.web_name#}" class="wthumb" /></a>
+					<ul class="linkitem">
+						<li><strong>交易类型：</strong>{#$link.deal_type#}</li>
+                        <li><strong>链接类型：</strong>{#$link.link_type#}</li>
+                        <li><strong>链接位置：</strong>{#$link.link_pos#}</li>
+                        <li><strong>链接价格：</strong>{#$link.link_price#}</li>
+                        <li><strong>浏览次数：</strong>{#$link.link_views#} 次</li>
+                        <li>{#get_adcode(1)#}</li>
+					</ul>
+				</div>
+                <div id="otherinfo">
+                	<h2>其他说明</h2>
+					<p><strong>要 求 一：</strong>对方网站百度收录必须超过 {#$link.link_if1#} 条</p>
+                	<p><strong>要 求 二：</strong>对方Google PageRank值>= {#$link.link_if2#}</p>
+                	<p><strong>要 求 三：</strong>对方首页在百度的快照时间不超过 {#$link.link_if3#} 天</p>
+                	<p><strong>要 求 四：</strong>对方首页外链不得超过 {#$link.link_if4#} 个</p>
+                	<p><strong>链接说明：</strong>{#$link.link_intro#}</p>
+				</div>
+            </div>
+        </div>
+        <div id="mainbox-right">
+        	<div class="ad250x250">{#get_adcode(1)#}</div>
+            <div class="blank10"></div>
+            <div id="bestart">
+            	<h3>推荐资讯</h3>
+                <ul class="artlist_b">
+                	{#foreach from=get_articles(0, 10) item=art#}
+                	<li><a href="{#$art.art_link#}">{#$art.art_title#}</a></li>
+                    {#/foreach#}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {#include file="footer.html"#}
+</div>
+</body>
+</html>
