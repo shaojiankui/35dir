@@ -247,15 +247,15 @@ function get_sitemap_url($module, $cate_id) {
 }
 
 /** thumbs */
-function get_webthumb($web_pic) {
-	global $options;
-	
-	if (!empty($web_pic)) {
-		$strurl = $options['site_root'].$options['upload_dir'].'/'.$web_pic;
-	} else {
-		$strurl = $options['site_root'].'public/images/nopic.gif';
-	}
-	
-	return $strurl;
+function get_webthumb($web_pic,$web_url) {
+//有缩略图显示本地 没有缩略图调用爱站修改方法
+global $options;
+if (!empty($web_pic)) {
+$strurl = $options['site_root'].$options['upload_dir'].'/'.$web_pic;
+} else {
+$strurl= 'http://webthumb.aizhan.com/ajaxAction/webthumb2.php?domain='.$web_url;
+//引号内链接可随时更新
+}
+return $strurl;
 }
 ?>

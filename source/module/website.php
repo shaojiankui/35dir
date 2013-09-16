@@ -35,7 +35,9 @@ function get_websites($cate_id = 0, $top_num = 10, $is_pay = false, $is_best = f
 	$results = array();
 	while ($row = $DB->fetch_array($query)) {
 		$row['web_furl'] = format_url($row['web_url']);
-		$row['web_pic'] = get_webthumb($row['web_pic']);
+		//有缩略图显示本地 没有缩略图调用爱站修改方法
+		$row['web_pic'] = get_webthumb($row['web_pic'],$row['web_url']);
+		//end by sjk
 		$row['web_tags'] = get_format_tags($row['web_tags']);
 		$row['web_ctime'] = date('Y-m-d', $row['web_ctime']);
 		$row['web_link'] = get_website_url($row['web_id']);
@@ -88,7 +90,9 @@ function get_website_list($where = 1, $field = 'ctime', $order = 'DESC', $start 
 		}
 		$row['web_furl'] = format_url($row['web_url']);
 		$row['web_link'] = get_website_url($row['web_id']);
-		$row['web_pic'] = get_webthumb($row['web_pic']);
+		//有缩略图显示本地 没有缩略图调用爱站修改方法
+		$row['web_pic'] = get_webthumb($row['web_pic'],$row['web_url']);
+		//end by sjk
 		$row['web_status'] = $status;
 		$row['web_ctime'] = date('Y-m-d', $row['web_ctime']);
 		$row['web_utime'] = date('Y-m-d', $row['web_utime']);

@@ -34,7 +34,9 @@ if (!$smarty->isCached($tempfile, $cache_id)) {
 	$smarty->assign('cate_description', $cate['cate_description']);
 	
 	$link['web_furl'] = format_url($link['web_url']);
-	$link['web_pic'] = get_webthumb($link['web_pic']);
+	//有缩略图显示本地 没有缩略图调用爱站修改方法
+	$link['web_pic'] = get_webthumb($link['web_pic'],$$link['web_url']);
+	//end  by sjk
 	$link['deal_type'] = $deal_types[$link['deal_type']];
 	$link['link_type'] = $link_types[$link['link_type']];
 	$link['link_pos'] = $link_pos[$link['link_pos']];
