@@ -2,7 +2,7 @@
 class PageRank {
 	function getGPR($url) {
 		$url = "http://toolbarqueries.google.com/tbr?client=navclient-auto&features=Rank&ch=".$this->checkHash($this->hashURL($url))."&q=info:".$url;
-		//pr值获取失效问题修改方法
+		// get PR value
 		$data = file_get_contents($url);
 		//end by skyfox
 		if (!empty($data)) {
