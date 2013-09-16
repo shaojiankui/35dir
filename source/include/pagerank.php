@@ -2,7 +2,9 @@
 class PageRank {
 	function getGPR($url) {
 		$url = "http://toolbarqueries.google.com/tbr?client=navclient-auto&features=Rank&ch=".$this->checkHash($this->hashURL($url))."&q=info:".$url;
-		$data = get_url_content($url);
+		//pr值获取失效问题修改方法
+		$data = file_get_contents($url);
+		//end by skyfox
 		if (!empty($data)) {
 			preg_match('/Rank_([0-9]+):([0-9]+):([0-9]+)/si', $data, $matches);
 			return ($matches[3]) ? $matches[3] : 0;
