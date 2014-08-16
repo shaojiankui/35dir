@@ -270,7 +270,7 @@ function get_website_api($cate_id = 0, $start = 0, $pagesize = 0) {
 	unset($row);
 	$DB->free_result($query);
 	
-	$total = $DB->get_count($DB->table('websites').' w', $where);
+	$total = $DB->get_count($DB->table('websites').' w', "");
 	
 	header("Content-Type: application/xml;");
 	echo "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n";

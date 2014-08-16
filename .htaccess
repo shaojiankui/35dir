@@ -66,4 +66,9 @@ RewriteRule ^article-(.+)-(\d+)-(\d+)\.html$ index.php\?mod=article&cid=$2&page=
 RewriteRule ^article\/(.+)\/(\d+)-(\d+)\.html$ index.php\?mod=article&cid=$2&page=$3
 RewriteRule ^article\/(.+)\/(\d+)/(\d+)$ index.php\?mod=article&cid=$2&page=$3
 
+# API
+RewriteRule ^api.html$ index.php\?mod=api
+RewriteRule ^api$ index.php\?mod=api
+RewriteRule ^api$ index.php\?mod=api
+
 # END
