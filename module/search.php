@@ -20,7 +20,6 @@ if ($curpage > 1) {
 		
 $strtype = strtolower(trim($_GET['type']));
 $keyword = addslashes(trim($_GET['query']));
-$keyword = RemoveXSS($keyword);
 
 if (!$smarty->isCached($tempfile)) {
 	$where = "w.web_status=3";
