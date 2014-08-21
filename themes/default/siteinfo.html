@@ -22,7 +22,9 @@
 					<a href="{#$web.web_furl#}" target="_blank"><img src="{#$web.web_pic#}" width="130" height="110" alt="{#$web.web_name#}" class="wthumb" /></a>
 					<ul class="siteitem">
 						<li><strong>网站地址：</strong><a href="{#$web.web_furl#}" target="_blank" class="visit" onclick="clickout({#$web.web_id#})"><font color="#008000">{#$web.web_url#}</font></a></li>
-            			<li><strong>服务器IP：</strong>{#$web.web_ip#}</li>
+            		    	<li><strong>服务器IP：</strong>{#$web.web_ip#}</li>
+                       <li><strong>网站评分：</strong><span id="score"></span><span id="result" style="color: #f30; font: bold 12px Arial; padding: 5px;"></span></li>
+
                         <li><strong>网站描述：</strong><span style="line-height: 23px;">{#$web.web_intro#}</span></li>
                         <li><strong>联系站长：</strong><a href="http://wpa.qq.com/msgrd?v=3&amp;uin={#$user.user_qq#}&amp;site={#$user.nick_name#}&amp;menu=yes" target="_blank"><img border="0" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:{#$user.user_qq#}:41"></a></li>
                         <li><strong>TAG标签：</strong>{#foreach from=$web_tags item=item#}<a href="{#$item.tag_link#}">{#$item.tag_name#}</a>　{#/foreach#}</li>
@@ -65,7 +67,10 @@
     </div>
     {#include file="footer.html"#}
 </div>
-
+<script type="text/javascript" src="{#$site_root#}public/scripts/jquery.raty.js"></script>
+<script type="text/javascript">
+$('#score').raty({path : '{#$site_root#}public/scripts/star', half : true, target : '#result', targetType : 'number', targetText : '{#$web.web_score#}', score : {#$web.web_score#}, click: function($score, $event) {$.ajax({type: 'POST', url: sitepath + '?mod=ajaxpost', data: {'type' : 'score', 'score' : $score, 'wid' : '{#$web.web_id#}'}, cache: false, success: function($data){if ($data == 1) {$str = '你已经评过分了！';} else {$str = $data;} $('#result').text($str);}});}});
+</script>
 <script type="text/javascript" src="{#$site_root#}?mod=getdata&type=ip&wid={#$web.web_id#}"></script>
 <script type="text/javascript" src="{#$site_root#}?mod=getdata&type=grank&wid={#$web.web_id#}"></script>
 <script type="text/javascript" src="{#$site_root#}?mod=getdata&type=brank&wid={#$web.web_id#}"></script>

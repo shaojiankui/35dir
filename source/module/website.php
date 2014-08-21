@@ -108,7 +108,7 @@ function get_website_list($where = 1, $field = 'ctime', $order = 'DESC', $start 
 function get_one_website($where = 1) {
 	global $DB;
 	
-	$row = $DB->fetch_one("SELECT w.user_id, w.cate_id, w.web_id, w.web_name, w.web_url, w.web_tags, w.web_pic, w.web_intro, w.web_ispay, w.web_istop, w.web_isbest, w.web_status, w.web_ctime, d.web_ip, d.web_grank, d.web_brank, d.web_srank, d.web_arank, d.web_instat, d.web_outstat, d.web_views, d.web_utime FROM ".$DB->table('websites')." w LEFT JOIN ".$DB->table("webdata")." d ON w.web_id=d.web_id WHERE $where LIMIT 1");
+	$row = $DB->fetch_one("SELECT w.user_id, w.cate_id, w.web_id, w.web_name, w.web_url, w.web_tags, w.web_pic, w.web_intro, w.web_ispay, w.web_istop, w.web_isbest, w.web_status, w.web_ctime, d.web_ip, d.web_grank, d.web_brank, d.web_srank, d.web_arank, d.web_instat, d.web_outstat, d.web_views, d.web_voter, d.web_score, d.web_utime FROM ".$DB->table('websites')." w LEFT JOIN ".$DB->table("webdata")." d ON w.web_id=d.web_id WHERE $where LIMIT 1");
 	
 	return $row;
 }

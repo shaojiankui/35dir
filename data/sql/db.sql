@@ -127,21 +127,21 @@ CREATE TABLE IF NOT EXISTS `dir_pages` (
 
 
 CREATE TABLE IF NOT EXISTS `dir_users` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_type` enum('admin','member','recruit','vip') NOT NULL DEFAULT 'member',
+  `user_id` int(10) unsigned NOT NULL auto_increment,
+  `user_type` enum('admin','member','qqlogin','recruit','vip') NOT NULL default 'member',
   `user_email` varchar(50) NOT NULL,
   `user_pass` char(32) NOT NULL,
   `open_id` char(32) NOT NULL,
   `nick_name` varchar(20) NOT NULL,
   `user_qq` varchar(20) NOT NULL,
-  `user_score` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `user_score` smallint(5) unsigned NOT NULL default '0',
   `verify_code` varchar(32) NOT NULL,
-  `user_status` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `join_time` int(10) unsigned NOT NULL DEFAULT '0',
-  `login_time` int(10) unsigned NOT NULL DEFAULT '0',
-  `login_ip` int(10) unsigned NOT NULL DEFAULT '0',
-  `login_count` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`user_id`)
+  `user_status` tinyint(1) unsigned NOT NULL default '0',
+  `join_time` int(10) unsigned NOT NULL default '0',
+  `login_time` int(10) unsigned NOT NULL default '0',
+  `login_ip` int(10) unsigned NOT NULL default '0',
+  `login_count` smallint(5) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 
@@ -155,6 +155,8 @@ CREATE TABLE IF NOT EXISTS `dir_webdata` (
   `web_arank` int(10) unsigned NOT NULL DEFAULT '0',
   `web_instat` int(10) unsigned NOT NULL DEFAULT '0',
   `web_outstat` int(10) unsigned NOT NULL DEFAULT '0',
+  `web_voter` int(10) unsigned NOT NULL default '0',
+  `web_score` int(10) unsigned NOT NULL default '0',
   `web_fnum` int(10) unsigned NOT NULL DEFAULT '0',
   `web_views` int(10) unsigned NOT NULL DEFAULT '0',
   `web_errors` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -211,15 +213,14 @@ CREATE TABLE IF NOT EXISTS `dir_websites` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 
-
 INSERT INTO `dir_options` (`option_name`, `option_value`) VALUES
-('site_name', '蓝天|优秀网站分类目录'),
-('site_title', '蓝天|优秀网站分类目录'),
+('site_name', '网站分类目录'),
+('site_title', '网站分类目录'),
 ('site_url', '/'),
 ('site_root', '/'),
-('admin_email', 'YipChaoJun@Gmail.Com'),
-('site_keywords', '蓝天,花七七,HuaQiQi,HQQ,分类目录,优秀网站分类目录'),
-('site_description', '蓝天|优秀网站分类目录 DIR.HQQBLOG.COM——致力於收錄優秀网站，提高网站的知名度，為您的网站提高人氣，期待您的加盟~'),
+('admin_email', ''),
+('site_keywords', '分类目录,优秀网站分类目录'),
+('site_description', '提高网站的知名度，為您的网站提高人氣，期待您的加盟~'),
 ('site_copyright', 'Copyright &copy; 2008-2011 35dir.com All Rights Reserved'),
 ('register_email_verify', 'no'),
 ('is_enabled_register', 'yes'),
@@ -229,7 +230,7 @@ INSERT INTO `dir_options` (`option_name`, `option_value`) VALUES
 ('upload_dir', 'uploads'),
 ('article_link_num', '3'),
 ('data_update_cycle', '3'),
-('check_link_url', 'dir.hqqblog.com'),
+('check_link_url', 'dir.dir.com'),
 ('check_link_name', ''),
 ('is_enabled_linkcheck', 'yes'),
 ('submit_close_reason', ''),

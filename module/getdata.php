@@ -6,7 +6,7 @@ require(APP_PATH.'module/webdata.php');
 $type = trim($_GET['type']);
 $web_id = intval($_GET['wid']);
 
-if (in_array($type, array('ip', 'grank', 'brank', 'srank', 'arank', 'clink', 'outstat', 'addfav', 'rate', 'error'))) {
+if (in_array($type, array('ip', 'grank', 'brank', 'srank', 'arank', 'clink', 'outstat', 'addfav', 'rate','score','error'))) {
 	$where = "w.web_id=$web_id";
 	$web = get_one_website($where);
 	if (!$web) {
@@ -117,6 +117,32 @@ if (in_array($type, array('ip', 'grank', 'brank', 'srank', 'arank', 'clink', 'ou
 			}
 		}
 		*/
+	}
+	
+	# score
+	if ($type == 'score') {
+		$score = intval($_GET['score']);
+		
+		if (isset($score)) {
+			$cookie = 'score-'.$web['web_id'];
+			$time = time();
+			
+			if (!isset($_COOKIE['person']) && $_COOKIE['person'] != $cookie) {
+				$DB->query("UPDATE ".$DB->table('webdata')." SET web_voter=web_voter+1, web_score=web_score+'$score' WHERE web_id='".$web['web_id']."'");
+				$row = $DB->fetch_one("SELECT web_voter, web_score FROM ".$DB->table('webdata')." WHERE web_id='".$web['web_id']."' LIMIT 1");
+				if ($row['web_voter'] > 0 && $row['web_score'] > 0) {
+					$aver = $row['web_score'] / $row['web_voter'];
+					$aver = round($aver, 1);
+				} else {
+					$aver = 0;
+				}
+				#设置COOKIE
+				setcookie('person', $cookie, $time + 3600);
+				echo $aver;			
+			} else {
+				echo 1;	
+			}
+		}
 	}
 	
 	#error

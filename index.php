@@ -6,7 +6,6 @@ define('ROOT_PATH', str_replace('\\', '/', dirname(__FILE__)).'/');
 define('APP_PATH', ROOT_PATH.'source/');
 define('MOD_PATH', ROOT_PATH.'module/');
 
-
 require(APP_PATH.'init.php');
 require(APP_PATH.'module/link.php');
 require(APP_PATH.'module/adver.php');
@@ -25,7 +24,7 @@ require(APP_PATH.'module/rewrite.php');
 $module = $_GET['mod'] ? $_GET['mod'] : $_POST['mod'];
 if (!isset($module)) $module = 'index';
 
-$modarr = array('index', 'webdir', 'article', 'weblink', 'category', 'update', 'archives', 'search', 'siteinfo', 'artinfo', 'linkinfo', 'top', 'feedback', 'diypage', 'rssfeed', 'sitemap', 'ajaxget', 'getdata', 'api');
+$modarr = array('index', 'webdir', 'article', 'weblink', 'category', 'update', 'archives', 'search', 'siteinfo', 'artinfo', 'linkinfo', 'top', 'feedback', 'diypage', 'rssfeed', 'sitemap', 'ajaxget', 'getdata', 'ajaxpost', 'api','addsite');
 if (in_array($module, $modarr)) {
 	$modpath = MOD_PATH.$module.'.php';
 	if (is_file($modpath)) {

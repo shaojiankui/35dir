@@ -41,6 +41,14 @@ if (!$smarty->isCached($tempfile, $cache_id)) {
 	$web['web_ctime'] = date('Y-m-d', $web['web_ctime']);
 	$web['web_utime'] = date('Y-m-d', $web['web_utime']);
 	
+	//score
+	if ($web['web_voter'] > 0 && $web['web_score'] > 0) {
+		$web['web_score'] = round($web['web_score'] / $web['web_voter'], 1);
+	} else {
+		$web['web_score'] = 0;
+	}
+	
+	
 	/** tags */
 	$web_tags = get_format_tags($web['web_tags']);
 	$smarty->assign('web_tags', $web_tags);
