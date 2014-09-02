@@ -201,6 +201,16 @@ a.timelink_bg {background: #08c; color: #fff; padding: 3px;}
 .wthumb {background: #fff; border: solid 1px #dadada; float: left; padding: 1px; width: 140px;}
 .siteitem {margin-left: 160px;}
 .siteitem li {padding-bottom: 8px;}
+/* comment */
+.comment {padding: 10px;background-color:white;}
+.comment h3 {border-bottom: solid 1px #e8e8e8; font-size: 14px; padding-bottom: 8px;}
+.comment-list {}
+.comment-list li {padding: 10px 0 10px 75px; position: relative; zoom: 1; min-height: 52px;}
+.comment-gravatar {position: absolute; left: 0; top: 10px; width: 54px; height: 60px; text-align: center;}
+.comment-title {background: #f2fbf2; color: #06c; font-size: 14px; height: 25px; line-height: 25px; overflow: hidden; text-overflow: ellipsis; text-indent: 5px; white-space: nowrap;}
+.comment-title time {color: #999; font-size: 12px;}
+.comment-text {line-height: 25px; padding: 5px 0;}
+.comment-reply {background: #fafef6; border: dotted 1px #c6e0af; line-height: 25px; margin: 5px 0; padding: 3px 8px;}
 /* relsite */
 #relsite {background: #fff; border: solid 1px #e8e8e8; padding: 10px;}
 #relsite h2 {color: #333; font-size: 14px;}

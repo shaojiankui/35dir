@@ -171,6 +171,23 @@ function get_weblink_url($link_id, $abs_path = false) {
 	return $strurl;
 }
 
+/** comment */
+function get_comment_url($web_id = 0, $page = 1) {
+	global $options;
+	
+	$page = isset($page) && $page > 0 ? $page : 1;
+	if ($options['link_struct'] == 1) {
+		$strurl = $url_prefix.'comment-'.$web_id.'-'.$page.'.html';
+	} elseif ($options['link_struct'] == 2) {
+		$strurl = $url_prefix.'comment/'.$web_id.'-'.$page;
+	} elseif ($options['link_struct'] == 3) {
+		$strurl = $url_prefix.'comment/'.$web_id.'-'.$page.'.html';
+	} else {
+		$strurl = $url_prefix.'?mod=comment&wid='.$web_id;
+	}
+	
+	return $options['site_url'].$strurl;
+}
 /** diypage */
 function get_diypage_url($page_id) {
 	global $options;

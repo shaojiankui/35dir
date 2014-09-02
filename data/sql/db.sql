@@ -74,6 +74,18 @@ CREATE TABLE IF NOT EXISTS `dir_favorites` (
   PRIMARY KEY (`fav_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `dir_comments` (
+  `com_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `root_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `web_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `com_nick` varchar(10) NOT NULL,
+  `com_email` varchar(50) NOT NULL,
+  `com_text` varchar(250) NOT NULL,
+  `com_ip` int(10) unsigned NOT NULL DEFAULT '0',
+  `com_status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `com_time` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`com_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS `dir_feedbacks` (

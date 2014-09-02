@@ -9,6 +9,7 @@ function rewrite_output($content) {
 		"/href\=\"(\.*\/*)\?mod\=archives([&amp;|&]date\=(\d+))?([&amp;|&]page\=(\d+))?\"/e",
 		"/href\=\"(\.*\/*)\?mod\=search([&amp;|&]type\=(.+?))?([&amp;|&]query\=(.+?))?([&amp;|&]page\=(\d+))?\"/e",
 		"/href\=\"(\.*\/*)\?mod\=siteinfo[&amp;|&]wid\=(\d+)\"/e",
+		"/href\=\"(\.*\/*)\?mod\=comment([&amp;|&]wid\=(\d+))?([&amp;|&]page\=(\d+))?\"/ie",
 		"/href\=\"(\.*\/*)\?mod\=diypage[&amp;|&]pid\=(\d+)\"/e",
 		"/href\=\"(\.*\/*)\?mod\=rssfeed([&amp;|&]type\=(webdir|article))?([&amp;|&]cid\=(\d+))?\"/e",
 		"/href\=\"(\.*\/*)\?mod\=sitemap([&amp;|&]type\=(webdir|article))?([&amp;|&]cid\=(\d+))?\"/e",
@@ -22,6 +23,7 @@ function rewrite_output($content) {
 		"rewrite_archives('\\3', '\\5')",
 		"rewrite_search('\\3', '\\5', '\\7')",
 		"rewrite_siteinfo('\\2')",
+		"rewrite_comment('\\3', '\\5')",
 		"rewrite_diypage('\\2')",
 		"rewrite_rssfeed('\\3', '\\5')",
 		"rewrite_sitemap('\\3', '\\5')",
@@ -59,7 +61,10 @@ function rewrite_search($type = 'name', $query, $page) {
 function rewrite_siteinfo($web_id) {
 	return 'href="'.get_website_url($web_id).'"';
 }
-
+/** comment */
+function rewrite_comment($web_id, $page) {
+	return 'href="'.get_comment_url($web_id, $page).'"';
+}
 /** diypage */
 function rewrite_diypage($page_id) {	
 	return 'href="'.get_diypage_url($page_id).'"';

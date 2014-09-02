@@ -112,7 +112,30 @@ function get_one_website($where = 1) {
 	
 	return $row;
 }
+
+/** website comments */
+function get_website_comments($web_id = 0, $top_num = 10) {
+	global $DB;
 	
+	$sql = "SELECT com_id, web_id, root_id, com_nick, com_email, com_text, com_ip, com_time FROM ".$DB->table('comments')." WHERE com_status=1 AND root_id=0 AND web_id='$web_id' ORDER BY com_id DESC";
+	if ($top_num > 0) $sql .= " LIMIT $top_num";
+	$query = $DB->query($sql);
+	$comments = array();
+	while ($row = $DB->fetch_array($query)) {
+		$count = get_comment_count($row['com_id'], $row['web_id']);
+		if ($count > 0) {
+			$row['reply_comments'] = get_comments($row['com_id'], $row['web_id']);
+		}
+		$row['com_ip'] = long2ip($row['com_ip']);
+		$row['com_time'] = 	$row['com_time'] = date('Y-m-d H:s', $row['com_time']);
+
+		$comments[] = $row;
+	}
+	$DB->free_result($query);
+	
+	return $comments;
+}
+
 /** rssfeed */
 function get_website_rssfeed($cate_id = 0) {
 	global $DB, $options;

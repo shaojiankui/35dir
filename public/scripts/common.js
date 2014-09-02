@@ -36,7 +36,53 @@ function rewrite_search(){
 	}
 	return false;
 }
-
+//评论
+function post_comment() {
+	var $content = $('#content').val();
+	var $email = $('#email').val();
+	var $nick = $('#nick').val();
+	var $wid = parseInt($('#wid').val());
+	var $rid = parseInt($('#rid').val());
+	if ($content == '') {
+		$('#content').focus();
+		return false;
+	} else {
+		if ($content.length > 250) {
+			alert('内容长度超过250个字符！');	
+			return false;
+		}
+	}
+	if ($email == '') {
+		$('#email').focus();
+		return false;
+	} else {
+		var $reg = /^[\w\-\.]+@[\w\-\.]+(\.\w+)+$/;	
+		if (!$reg.test($email)) {
+			alert('Email格式不正确！');
+			$('#email').focus();
+			return false;
+		}
+	}
+	if ($nick == '') {
+		$('#nick').focus();
+		return false;
+	}
+	
+	$.ajax({
+		type: 'POST',
+		url: sitepath + '?mod=ajaxpost',
+		datatype: 'html',
+		data: {'type' : 'comment', 'rid' : $rid, 'wid' : $wid, 'content' : $content, 'email' : $email, 'nick' : $nick},
+		success: function($data) {
+			if ($data == 1) {
+				location.reload();
+			} else {
+				alert($data);	
+			}
+		}	
+	});
+	return false;
+}
 //验证url
 function checkurl(url){
 	if (url == '') {

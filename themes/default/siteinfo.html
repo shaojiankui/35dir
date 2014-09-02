@@ -42,6 +42,41 @@
                		{#/foreach#}
               	</ul>
             </div>
+            <div class="blank10"></div>
+      <div class="comment">
+          <h3>{#$web.web_name#}的精彩点评</h3>
+          <ul class="comment-list">
+            {#foreach from=$comments item=com name=comlist#}
+            <li>
+              <div class="comment-gravatar"><img src="http://www.gravatar.com/avatar/{#$com.com_email|md5#}?s=50&d=mm&r=g0" alt="{#$com.com_nick#}"><br>{#$com.com_nick#}</div>
+              <div class="comment-title">{#$smarty.foreach.comlist.iteration#}楼 {#$com.com_nick#}　<time>{#$com.com_time#}</time></div>
+              <div class="comment-text"><a href="#comment" style="float: right;" onClick="$('#rid').val({#$com.com_id#});">回复</a>{#$com.com_text#}</div>
+              {#if $com.reply_comments#}
+              {#foreach from=$com.reply_comments item=rcom#}
+              <div class="comment-reply">
+                <span class="gre">{#$rcom.com_nick#} 于 {#$rcom.com_time#} 回复</span><br>{#$rcom.com_text#}
+              </div>
+              {#/foreach#}
+              {#/if#}
+            </li>
+            {#foreachelse#}
+            <li>无任何评论信息！</li>
+            {#/foreach#}
+          </ul>
+          <div align="right"><a href="?mod=comment&wid={#$web.web_id#}">查看更多关于《{#$web.web_name#}》的评论 &raquo;</a></div>
+          <div class="blank10"></div>
+          <h3>发表评论</h3>
+          <div class="comment-form">
+            <ul class="formbox" style="padding-left: 100px; padding-top: 20px;">
+            <form name="cform" id="comment" method="post" action="">
+              <li><strong><font color="#ff0000">*</font> 评论内容：</strong><textarea name="content" id="content" cols="52" rows="5" class="fipt"></textarea></li>
+              <li><strong><font color="#ff0000">*</font> 电子邮箱：</strong><input type="text" name="email" id="email" size="50" maxlength="50" class="fipt"></li>
+              <li><strong><font color="#ff0000">*</font> 昵　　称：</strong><input type="text" name="nick" id="nick" size="30" maxlength="10" class="fipt"><input type="hidden" name="rid" id="rid" value="0"><input type="hidden" name="wid" id="wid" value="{#$web.web_id#}"></li>
+              <li><strong>&nbsp;</strong><input type="button" id="button" class="fbtn" value="发表评论" onClick="post_comment();"></li>
+            </form>
+            </ul>
+          </div>
+        </div>
         </div>
         <div id="mainbox-right">
         	<div class="ad250x250">{#get_adcode(1)#}</div>

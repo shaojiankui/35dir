@@ -56,6 +56,7 @@ if (!$smarty->isCached($tempfile, $cache_id)) {
     $smarty->assign('web', $web);
 	$smarty->assign('user', $user);
 	$smarty->assign('related_website', get_websites($web['cate_id'], 10, false, false, 'ctime'));
+	$smarty->assign('comments', get_website_comments($web['web_id'], 10));
 }
 		
 smarty_output($tempfile, $cache_id);

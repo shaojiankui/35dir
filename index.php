@@ -19,6 +19,7 @@ require(APP_PATH.'module/user.php');
 require(APP_PATH.'module/stats.php');
 require(APP_PATH.'module/prelink.php');
 require(APP_PATH.'module/rewrite.php');
+require(APP_PATH.'module/comment.php');
 
 /** module */
 $module = $_GET['mod'] ? $_GET['mod'] : $_POST['mod'];
