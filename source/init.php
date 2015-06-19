@@ -1,4 +1,4 @@
-<?
+<?php
 error_reporting(0);
 define('IN_HANFOX',true);
 header('Content-type: text/html; charset=utf-8');
